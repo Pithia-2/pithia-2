@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pithia2.Views.Home">
+  <grid id="27dc6" binding="MainPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="536" height="554"/>
+    </constraints>
+    <properties>
+      <background color="-2171170"/>
+      <enabled value="false"/>
+      <foreground color="-1"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="7dc64" class="javax.swing.JLabel" binding="Logo">
+        <constraints>
+          <grid row="1" column="0" row-span="3" col-span="2" vsize-policy="4" hsize-policy="4" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <enabled value="true"/>
+          <font size="22"/>
+          <foreground color="-1282"/>
+          <horizontalAlignment value="2"/>
+          <horizontalTextPosition value="2"/>
+          <icon value="resources/images.jpg"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <vspacer id="75c1e">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="d5ac0" class="javax.swing.JLabel" binding="Tiile">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="22"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Διεθνές Πανεπιστήμιο της Ελλάδος"/>
+        </properties>
+      </component>
+      <component id="bb183" class="javax.swing.JLabel" binding="Details">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="f5183" class="javax.swing.JButton" binding="test1">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="test1"/>
+        </properties>
+      </component>
+      <component id="544b4" class="javax.swing.JButton" binding="LoginButton">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-5327176"/>
+          <enabled value="true"/>
+          <foreground color="-263169"/>
+          <text value="Sign in"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
