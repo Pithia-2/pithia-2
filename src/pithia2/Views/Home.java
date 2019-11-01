@@ -38,6 +38,7 @@ public class Home extends JFrame
       {
         JFrame login_frame = new Login();
         login_frame.setVisible(true);
+        dispose();
       }
     });
   }
