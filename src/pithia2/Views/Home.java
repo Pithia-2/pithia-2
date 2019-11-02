@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import pithia2.GlobalConstants;
 
 public class Home extends JFrame {
 
@@ -18,7 +19,7 @@ public class Home extends JFrame {
 
   public Home() {
     add(MainPanel);
-    setSize(1280, 720);
+    setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
