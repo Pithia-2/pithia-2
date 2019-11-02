@@ -3,20 +3,17 @@ package pithia2.Models;
 public class User {
 
   private String username;
-  private String firstname;
-  private String lastname;
-  private String department;
-  private int semester;
+  private String password;
+  private String fullname;
+  private String email;
 
   private static User userInstance = null;
 
-  public User(String username, String firstname, String lastname,
-      String department, int semester) {
+  public User(String username, String password, String fullname, String email) {
     this.username = username;
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.department = department;
-    this.semester = semester;
+    this.password = password;
+    this.fullname = fullname;
+    this.email = email;
   }
 
   public void login() {
@@ -39,35 +36,27 @@ public class User {
     this.username = username;
   }
 
-  public String getFirstname() {
-    return firstname;
+  public String getPassword() {
+    return password;
   }
 
-  public String getLastname() {
-    return lastname;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
+  public String getFullname() {
+    return fullname;
   }
 
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
+  public void setFullname(String fullname) {
+    this.fullname = fullname;
   }
 
-  public String getDepartment() {
-    return department;
+  public String getEmail() {
+    return email;
   }
 
-  public void setDepartment(String department) {
-    this.department = department;
-  }
-
-  public int getSemester() {
-    return semester;
-  }
-
-  public void setSemester(int semester) {
-    this.semester = semester;
+  public void setEmail(String email) {
+    this.email = email;
   }
 }
