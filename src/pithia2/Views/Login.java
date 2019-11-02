@@ -40,8 +40,8 @@ public class Login extends JFrame {
     });
 
     HomeButton.addActionListener(e -> {
-      JFrame login_frame = new Home();
-      login_frame.setVisible(true);
+      Home home = new Home();
+      home.setVisible(true);
       dispose();
     });
   }
