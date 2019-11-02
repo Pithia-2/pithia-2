@@ -18,7 +18,7 @@ public class Home extends JFrame {
 
   public Home() {
     add(MainPanel);
-    setSize(1000, 800);
+    setSize(1280, 720);
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
