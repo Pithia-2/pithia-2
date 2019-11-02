@@ -10,8 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class Login extends JFrame
-{
+public class Login extends JFrame {
 
   private JPanel LoginPane;
   private JButton LoginButton;
@@ -22,20 +21,16 @@ public class Login extends JFrame
   private JLabel PasswordText;
   private JButton HomeButton;
 
-  public Login()
-  {
+  public Login() {
     add(LoginPane);
-    setSize(1000,800);
+    setSize(1000, 800);
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    //Εμφανιζει το Home page
-    HomeButton.addActionListener(new ActionListener()
-    {
+    HomeButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e)
-      {
+      public void actionPerformed(ActionEvent e) {
         JFrame login_frame = new Home();
         login_frame.setVisible(true);
         dispose();
