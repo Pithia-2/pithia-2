@@ -14,13 +14,14 @@ import pithia2.GlobalConstants;
 public class Login extends JFrame {
 
   private JPanel LoginPane;
-  private JButton LoginButton;
   private JPasswordField PasswordField;
   private JTextField UsernameField;
   private JLabel Login;
   private JLabel UsernameText;
   private JLabel PasswordText;
   private JButton HomeButton;
+  private JLabel ErrorLabel;
+  private JButton LoginButton;
 
   public Login() {
     add(LoginPane);

@@ -56,7 +56,7 @@
           <text value=""/>
         </properties>
       </component>
-      <grid id="24cbb" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="24cbb" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="30" left="0" bottom="120" right="0"/>
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -64,24 +64,30 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="d0156" class="javax.swing.JButton" binding="LoginButton">
+          <component id="6ea8c" class="javax.swing.JLabel" binding="ErrorLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="40"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="100"/>
+                <preferred-size width="-1" height="100"/>
+                <maximum-size width="-1" height="100"/>
               </grid>
             </constraints>
             <properties>
-              <alignmentY value="0.0"/>
-              <background color="-14145496"/>
-              <borderPainted value="false"/>
-              <font size="16"/>
-              <foreground color="-1973791"/>
-              <hideActionText value="true"/>
-              <margin top="0" left="10" bottom="0" right="10"/>
-              <selected value="false"/>
-              <text value="SIGN IN" noi18n="true"/>
-              <verticalAlignment value="0"/>
-              <verticalTextPosition value="0"/>
+              <font size="14" style="1"/>
+              <foreground color="-3670016"/>
+              <text value="Wrong credentials."/>
+              <visible value="false"/>
+            </properties>
+          </component>
+          <component id="27442" class="javax.swing.JButton" binding="LoginButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="SIGN IN"/>
             </properties>
           </component>
         </children>
