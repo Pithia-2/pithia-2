@@ -4,9 +4,9 @@ public class Administrator extends User {
 
   private int adminCode;
 
-  public Administrator(String username, String firstname, String lastname, String department,
-      int semester, int adminCode) {
-    super(username, firstname, lastname, department, semester);
+  public Administrator(String username, String password, String fullname, String email,
+      int adminCode) {
+    super(username, password, fullname, email);
     this.adminCode = adminCode;
   }
 
