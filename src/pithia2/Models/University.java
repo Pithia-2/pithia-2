@@ -8,6 +8,7 @@ public class University {
   private String website;
   private int phoneNumber;
   private Department[] departments = new Department[30];
+  private User[] users = new User[100];
 
   private static University userInstance = null;
 
@@ -73,5 +74,13 @@ public class University {
 
   public void setDepartments(Department[] departments) {
     this.departments = departments;
+  }
+
+  public User[] getUsers() {
+    return users;
+  }
+
+  public void setUsers(User[] users) {
+    this.users = users;
   }
 }
