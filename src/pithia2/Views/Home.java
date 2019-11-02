@@ -1,7 +1,5 @@
 package pithia2.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,13 +25,10 @@ public class Home extends JFrame {
         "<html>Το Διεθνές Πανεπιστήμιο της Ελλάδος (ΔΙ.ΠΑ.Ε.) ιδρύθηκε το 2005 με έδρα την Θεσσαλονίκη.<br>"
             + "Το πανεπιστήμιο αποτελείται απο 7 σχολές σε Θεσσαλονίκη, Δράμα, Καβάλα και Σέρρες.</html>");
 
-    LoginButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        JFrame login_frame = new Login();
-        login_frame.setVisible(true);
-        dispose();
-      }
+    LoginButton.addActionListener(e -> {
+      Login login = new Login();
+      login.setVisible(true);
+      dispose();
     });
   }
 }
