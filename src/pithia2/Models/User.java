@@ -2,7 +2,6 @@ package pithia2.Models;
 
 public class User {
 
-  private int studentCode;
   private String username;
   private String firstname;
   private String lastname;
@@ -11,9 +10,8 @@ public class User {
 
   private static User userInstance = null;
 
-  public User(int studentCode, String username, String firstname, String lastname,
+  public User(String username, String firstname, String lastname,
       String department, int semester) {
-    this.studentCode = studentCode;
     this.username = username;
     this.firstname = firstname;
     this.lastname = lastname;
@@ -31,14 +29,6 @@ public class User {
 
   public static void setUserInstance(User userInstance) {
     User.userInstance = userInstance;
-  }
-
-  public int getStudentCode() {
-    return studentCode;
-  }
-
-  public void setStudentCode(int studentCode) {
-    this.studentCode = studentCode;
   }
 
   public String getUsername() {
