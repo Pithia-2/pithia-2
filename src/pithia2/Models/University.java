@@ -7,6 +7,7 @@ public class University {
   private String email;
   private String website;
   private int phoneNumber;
+  private Department[] departments = new Department[30];
 
   private static University userInstance = null;
 
@@ -64,5 +65,13 @@ public class University {
 
   public static void setUserInstance(University userInstance) {
     University.userInstance = userInstance;
+  }
+
+  public Department[] getDepartments() {
+    return departments;
+  }
+
+  public void setDepartments(Department[] departments) {
+    this.departments = departments;
   }
 }
