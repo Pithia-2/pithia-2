@@ -1,7 +1,7 @@
 package pithia2.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,13 +29,19 @@ public class Login extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        JFrame login_frame = new Home();
-        login_frame.setVisible(true);
-        dispose();
+    HomeButton.setOpaque(false);
+    HomeButton.setContentAreaFilled(false);
+
+    this.addWindowListener(new WindowAdapter() {
+      public void windowOpened(WindowEvent e) {
+        UsernameField.requestFocus();
       }
+    });
+
+    HomeButton.addActionListener(e -> {
+      JFrame login_frame = new Home();
+      login_frame.setVisible(true);
+      dispose();
     });
   }
 }
