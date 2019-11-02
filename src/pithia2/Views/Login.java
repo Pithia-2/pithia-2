@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import pithia2.GlobalConstants;
 
 public class Login extends JFrame {
 
@@ -23,7 +24,7 @@ public class Login extends JFrame {
 
   public Login() {
     add(LoginPane);
-    setSize(1000, 800);
+    setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
