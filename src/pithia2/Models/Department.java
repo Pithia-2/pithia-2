@@ -4,6 +4,7 @@ public class Department {
 
   private String name;
   private int phoneNumber;
+  private Lesson[] lessons = new Lesson[100];
 
   public Department(String name, int phoneNumber) {
     this.name = name;
@@ -24,5 +25,13 @@ public class Department {
 
   public void setPhoneNumber(int phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public Lesson[] getLessons() {
+    return lessons;
+  }
+
+  public void setLessons(Lesson[] lessons) {
+    this.lessons = lessons;
   }
 }
