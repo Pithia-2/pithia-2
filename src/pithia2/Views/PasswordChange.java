@@ -15,14 +15,16 @@ public class PasswordChange extends JFrame {
   private JPanel ChangePassPanel;
   private JButton HomeButton;
   private JLabel OldPassLabel;
-  private JTextField OldPassField;
+  private javax.swing.JPasswordField OldPassField;
   private JLabel NewPassLabel;
-  private JTextField NewPassField;
+  private javax.swing.JPasswordField NewPassField;
   private JLabel ConfirmNewPassLabel;
-  private JTextField ConfirmNewPassField;
+  private javax.swing.JPasswordField ConfirmNewPassField;
+  private JLabel MessageLabel;
+  private JPanel Navbar;
   private JButton SignoutButton;
   private JButton ConfirmButton;
-  private JLabel PassChangeSuccessLabel;
+  private JLabel TitleLabel;
 
   public PasswordChange() {
     add(ChangePassPanel);
@@ -31,13 +33,16 @@ public class PasswordChange extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Home home = new Home();
-        home.setVisible(true);
-        dispose();
-      }
+    HomeButton.addActionListener(e -> {
+      StudentInfo info = new StudentInfo();
+      info.setVisible(true);
+      dispose();
+    });
+
+    SignoutButton.addActionListener(e -> {
+      Login login = new Login();
+      login.setVisible(true);
+      dispose();
     });
   }
 }
