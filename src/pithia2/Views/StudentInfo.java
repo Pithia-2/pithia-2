@@ -1,7 +1,5 @@
 package pithia2.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,23 +11,23 @@ public class StudentInfo extends JFrame {
 
   private JPanel InfoPanel;
   private JButton HomeButton;
-  private JLabel StudentInfoLabel;
   private JLabel UsernameLabel;
   private JLabel UsernameInfo;
   private JLabel NameLabel;
   private JLabel NameInfo;
-  private JLabel SurnameLabel;
-  private JLabel SurenameInfo;
   private JLabel EmailLabel;
   private JLabel DepartmentLabel;
   private JLabel EmailInfo;
   private JLabel DepartmentInfo;
   private JLabel SemesterLabel;
   private JLabel SemesterInfo;
-  private JButton SignoutButton;
-  private JButton PassChangeButton;
   private JLabel StudentCodeLabel;
   private JLabel StudentCodeInfo;
+  private JLabel TitleLabel;
+  private JPanel Navbar;
+  private JButton PassChangeButton;
+  private JButton SignoutButton;
+  private JLabel DontRemoveMeLabel;
 
   public StudentInfo() {
     add(InfoPanel);
@@ -38,13 +36,22 @@ public class StudentInfo extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Home home = new Home();
-        home.setVisible(true);
-        dispose();
-      }
+    HomeButton.addActionListener(e -> {
+      StudentInfo info = new StudentInfo();
+      info.setVisible(true);
+      dispose();
+    });
+
+    PassChangeButton.addActionListener(e -> {
+      PasswordChange pc = new PasswordChange();
+      pc.setVisible(true);
+      dispose();
+    });
+
+    SignoutButton.addActionListener(e -> {
+      Login login = new Login();
+      login.setVisible(true);
+      dispose();
     });
   }
 }
