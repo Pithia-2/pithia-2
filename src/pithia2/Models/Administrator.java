@@ -1,6 +1,8 @@
 package pithia2.Models;
 
-public class Administrator extends User {
+import java.io.Serializable;
+
+public class Administrator extends User implements Serializable {
 
   private int adminCode;
 

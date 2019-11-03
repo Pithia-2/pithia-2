@@ -1,6 +1,8 @@
 package pithia2.Models;
 
-public class RegisteredLesson extends Lesson {
+import java.io.Serializable;
+
+public class RegisteredLesson extends Lesson implements Serializable {
 
   private double grade;
 
