@@ -1,6 +1,5 @@
 package pithia2.Controllers;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -13,8 +12,8 @@ public class Main {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
     SwingUtilities.invokeLater(() -> {
-      JFrame frame = new Home();
-      frame.setVisible(true);
+      Home home = new Home();
+      home.setVisible(true);
     });
   }
 }

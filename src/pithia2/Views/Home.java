@@ -40,13 +40,10 @@ public class Home extends JFrame {
       }
     });
 
-    LoginButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        JFrame login_frame = new Login();
-        login_frame.setVisible(true);
-        dispose();
-      }
+    LoginButton.addActionListener(e -> {
+      Login login = new Login();
+      login.setVisible(true);
+      dispose();
     });
   }
 }
