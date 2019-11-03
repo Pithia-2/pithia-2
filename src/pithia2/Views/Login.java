@@ -44,5 +44,11 @@ public class Login extends JFrame {
       home.setVisible(true);
       dispose();
     });
+
+    LoginButton.addActionListener(e -> {
+      StudentInfo si = new StudentInfo();
+      si.setVisible(true);
+      dispose();
+    });
   }
 }
