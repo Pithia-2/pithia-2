@@ -1,6 +1,8 @@
 package pithia2.Models;
 
-public class Registration {
+import java.io.Serializable;
+
+public class Registration implements Serializable {
 
   private int id;
   private RegisteredLesson[] registeredLessons = new RegisteredLesson[9];

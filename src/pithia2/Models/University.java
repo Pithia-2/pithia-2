@@ -1,6 +1,8 @@
 package pithia2.Models;
 
-public class University {
+import java.io.Serializable;
+
+public class University implements Serializable {
 
   private String name;
   private String address;

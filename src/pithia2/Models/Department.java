@@ -1,6 +1,8 @@
 package pithia2.Models;
 
-public class Department {
+import java.io.Serializable;
+
+public class Department implements Serializable {
 
   private String name;
   private int phoneNumber;
