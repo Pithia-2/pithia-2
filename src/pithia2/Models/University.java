@@ -8,13 +8,13 @@ public class University implements Serializable {
   private String address;
   private String email;
   private String website;
-  private int phoneNumber;
+  private String phoneNumber;
   private Department[] departments = new Department[30];
   private User[] users = new User[100];
 
   private static University userInstance = null;
 
-  public University(String name, String address, String email, String website, int phoneNumber) {
+  public University(String name, String address, String email, String website, String phoneNumber) {
     this.name = name;
     this.address = address;
     this.email = email;
@@ -54,11 +54,11 @@ public class University implements Serializable {
     this.website = website;
   }
 
-  public int getPhoneNumber() {
+  public String getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(int phoneNumber) {
+  public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
