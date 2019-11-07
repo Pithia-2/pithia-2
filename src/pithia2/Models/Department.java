@@ -1,12 +1,14 @@
 package pithia2.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Department implements Serializable {
 
   private String name;
   private String phoneNumber;
-  private Lesson[] lessons = new Lesson[100];
+  private List<Lesson> lessons = new ArrayList<Lesson>();
 
   public Department(String name, String phoneNumber) {
     this.name = name;
@@ -32,11 +34,11 @@ public class Department implements Serializable {
     this.phoneNumber = phoneNumber;
   }
 
-  public Lesson[] getLessons() {
+  public List<Lesson> getLessons() {
     return lessons;
   }
 
-  public void setLessons(Lesson[] lessons) {
+  public void setLessons(List<Lesson> lessons) {
     this.lessons = lessons;
   }
 }
