@@ -13,6 +13,9 @@ public class Department implements Serializable {
     this.phoneNumber = phoneNumber;
   }
 
+  public Department() {
+  }
+
   public String getName() {
     return name;
   }

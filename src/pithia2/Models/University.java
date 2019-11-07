@@ -22,6 +22,9 @@ public class University implements Serializable {
     this.phoneNumber = phoneNumber;
   }
 
+  public University() {
+  }
+
   public String getName() {
     return name;
   }
