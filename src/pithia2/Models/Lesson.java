@@ -22,6 +22,9 @@ public class Lesson implements Serializable {
     this.type = type;
   }
 
+  public Lesson() {
+  }
+
   public int getId() {
     return id;
   }

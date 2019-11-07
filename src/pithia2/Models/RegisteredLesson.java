@@ -12,6 +12,9 @@ public class RegisteredLesson extends Lesson implements Serializable {
     this.grade = grade;
   }
 
+  public RegisteredLesson() {
+  }
+
   public double getGrade() {
     return grade;
   }
