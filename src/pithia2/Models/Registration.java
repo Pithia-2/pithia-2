@@ -11,6 +11,9 @@ public class Registration implements Serializable {
     this.id = id;
   }
 
+  public Registration() {
+  }
+
   public int getId() {
     return id;
   }
