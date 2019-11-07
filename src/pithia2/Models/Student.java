@@ -1,13 +1,15 @@
 package pithia2.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Student extends User implements Serializable {
 
   private int studentCode;
   private String department;
   private int semester;
-  private Lesson[] passedLessons = new Lesson[100];
+  private List<RegisteredLesson> passedLessons = new ArrayList<RegisteredLesson>();
 
   public Student(String username, String password, String fullname, String email, int studentCode,
       String department, int semester) {
@@ -44,11 +46,11 @@ public class Student extends User implements Serializable {
     this.semester = semester;
   }
 
-  public Lesson[] getPassedLessons() {
+  public List<RegisteredLesson> getPassedLessons() {
     return passedLessons;
   }
 
-  public void setPassedLessons(Lesson[] passedLessons) {
+  public void setPassedLessons(List<RegisteredLesson> passedLessons) {
     this.passedLessons = passedLessons;
   }
 }

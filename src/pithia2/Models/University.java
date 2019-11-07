@@ -1,6 +1,8 @@
 package pithia2.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class University implements Serializable {
 
@@ -9,8 +11,8 @@ public class University implements Serializable {
   private String email;
   private String website;
   private String phoneNumber;
-  private Department[] departments = new Department[30];
-  private User[] users = new User[100];
+  private List<Department> departments = new ArrayList<Department>();
+  private List<User> users = new ArrayList<User>();
 
   private static University userInstance = null;
 
@@ -73,19 +75,19 @@ public class University implements Serializable {
     University.userInstance = userInstance;
   }
 
-  public Department[] getDepartments() {
+  public List<Department> getDepartments() {
     return departments;
   }
 
-  public void setDepartments(Department[] departments) {
+  public void setDepartments(List<Department> departments) {
     this.departments = departments;
   }
 
-  public User[] getUsers() {
+  public List<User> getUsers() {
     return users;
   }
 
-  public void setUsers(User[] users) {
+  public void setUsers(List<User> users) {
     this.users = users;
   }
 }
