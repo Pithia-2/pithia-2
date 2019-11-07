@@ -17,6 +17,9 @@ public class Student extends User implements Serializable {
     this.semester = semester;
   }
 
+  public Student() {
+  }
+
   public int getStudentCode() {
     return studentCode;
   }
