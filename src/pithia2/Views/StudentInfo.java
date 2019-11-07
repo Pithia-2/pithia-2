@@ -29,8 +29,9 @@ public class StudentInfo extends JFrame {
   private JButton SignoutButton;
   private JLabel DontRemoveMeLabel;
   private JButton RegistrationButton;
+  private JButton GradesButton;
 
-  public StudentInfo() {
+  StudentInfo() {
     add(InfoPanel);
     setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
@@ -40,6 +41,12 @@ public class StudentInfo extends JFrame {
     HomeButton.addActionListener(e -> {
       StudentInfo info = new StudentInfo();
       info.setVisible(true);
+      dispose();
+    });
+
+    GradesButton.addActionListener(e -> {
+      StudentGrades sg = new StudentGrades();
+      sg.setVisible(true);
       dispose();
     });
 
