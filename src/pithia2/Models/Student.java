@@ -7,12 +7,14 @@ import java.util.List;
 public class Student extends User implements Serializable {
 
   private int studentCode;
-  private String department;
+  private Department department;
   private int semester;
   private List<RegisteredLesson> passedLessons = new ArrayList<RegisteredLesson>();
 
+  private static Student studentInstance = null;
+
   public Student(String username, String password, String fullname, String email, int studentCode,
-      String department, int semester) {
+      Department department, int semester) {
     super(username, password, fullname, email);
     this.studentCode = studentCode;
     this.department = department;
@@ -20,6 +22,18 @@ public class Student extends User implements Serializable {
   }
 
   public Student() {
+  }
+
+  public void login() {
+    studentInstance = this;
+  }
+
+  public static Student getStudentInstance() {
+    return studentInstance;
+  }
+
+  public static void setStudentInstance(Student studentInstance) {
+    Student.studentInstance = studentInstance;
   }
 
   public int getStudentCode() {
@@ -30,11 +44,11 @@ public class Student extends User implements Serializable {
     this.studentCode = studentCode;
   }
 
-  public String getDepartment() {
+  public Department getDepartment() {
     return department;
   }
 
-  public void setDepartment(String department) {
+  public void setDepartment(Department department) {
     this.department = department;
   }
 
