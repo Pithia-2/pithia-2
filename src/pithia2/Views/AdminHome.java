@@ -6,13 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
+import pithia2.Models.User;
 
 public class AdminHome extends JFrame {
 
   private JPanel RootPanel;
   private JPanel Navbar;
   private JButton SignoutButton;
-  private JButton RegistrationButton;
+  private JButton UserManagementButton;
   private JButton GradesButton;
   private JLabel TitleLabel;
   private JLabel UsernameLabel;
@@ -36,6 +37,12 @@ public class AdminHome extends JFrame {
     GradesButton.addActionListener(e -> {
       AdminGrades ag = new AdminGrades();
       ag.setVisible(true);
+      dispose();
+    });
+
+    UserManagementButton.addActionListener(e -> {
+      UserManagement um = new UserManagement();
+      um.setVisible(true);
       dispose();
     });
 
