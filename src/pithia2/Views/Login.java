@@ -47,9 +47,7 @@ public class Login extends JFrame {
       dispose();
     });
 
-    LoginButton.addActionListener(e -> {
-      login();
-    });
+    LoginButton.addActionListener(e -> login());
   }
 
   private void login() {
@@ -66,6 +64,10 @@ public class Login extends JFrame {
           dispose();
         } else if (user instanceof Administrator) {
           //TODO set admin instance and display admin page
+          Administrator.setAdminInstance((Administrator) user);
+          AdminHome adminHome = new AdminHome();
+          adminHome.setVisible(true);
+          dispose();
         }
       } else {
         ErrorLabel.setVisible(true);
