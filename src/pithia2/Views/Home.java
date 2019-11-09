@@ -1,7 +1,5 @@
 package pithia2.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
@@ -46,13 +44,10 @@ public class Home extends JFrame {
       dispose();
     });
 
-    DepartmentsButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        DepartmentPage department = new DepartmentPage();
-        department.setVisible(true);
-        dispose();
-      }
+    DepartmentsButton.addActionListener(e -> {
+      Departments department1 = new Departments();
+      department1.setVisible(true);
+      dispose();
     });
   }
 }
