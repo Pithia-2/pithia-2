@@ -6,47 +6,43 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
+import pithia2.Models.User;
 
-public class StudentInfo extends JFrame {
+public class AdminHome extends JFrame {
 
-  private JPanel InfoPanel;
-  private JButton HomeButton;
+  private JPanel RootPanel;
+  private JPanel Navbar;
+  private JButton SignoutButton;
+  private JButton UserManagementButton;
+  private JButton GradesButton;
+  private JLabel TitleLabel;
   private JLabel UsernameLabel;
   private JLabel UsernameInfo;
+  private JLabel DontRemoveMeLabel;
   private JLabel NameLabel;
   private JLabel NameInfo;
   private JLabel EmailLabel;
-  private JLabel DepartmentLabel;
   private JLabel EmailInfo;
-  private JLabel DepartmentInfo;
-  private JLabel SemesterLabel;
-  private JLabel SemesterInfo;
-  private JLabel StudentCodeLabel;
-  private JLabel StudentCodeInfo;
-  private JLabel TitleLabel;
-  private JPanel Navbar;
+  private JLabel AdminCodeLabel;
+  private JLabel AdminCodeInfo;
   private JButton PassChangeButton;
-  private JButton SignoutButton;
-  private JLabel DontRemoveMeLabel;
-  private JButton RegistrationButton;
-  private JButton GradesButton;
 
-  StudentInfo() {
-    add(InfoPanel);
+  AdminHome() {
+    add(RootPanel);
     setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     GradesButton.addActionListener(e -> {
-      StudentGrades sg = new StudentGrades();
-      sg.setVisible(true);
+      AdminGrades ag = new AdminGrades();
+      ag.setVisible(true);
       dispose();
     });
 
-    RegistrationButton.addActionListener(e -> {
-      LessonRegistration lr = new LessonRegistration();
-      lr.setVisible(true);
+    UserManagementButton.addActionListener(e -> {
+      UserManagement um = new UserManagement();
+      um.setVisible(true);
       dispose();
     });
 

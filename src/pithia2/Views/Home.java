@@ -43,5 +43,11 @@ public class Home extends JFrame {
       login.setVisible(true);
       dispose();
     });
+
+    DepartmentsButton.addActionListener(e -> {
+      Departments department1 = new Departments();
+      department1.setVisible(true);
+      dispose();
+    });
   }
 }
