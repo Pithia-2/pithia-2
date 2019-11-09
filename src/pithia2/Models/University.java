@@ -14,7 +14,7 @@ public class University implements Serializable {
   private List<Department> departments = new ArrayList<Department>();
   private List<User> users = new ArrayList<User>();
 
-  private static University userInstance = null;
+  private static University universityInstance = null;
 
   public University(String name, String address, String email, String website, String phoneNumber) {
     this.name = name;
@@ -67,12 +67,12 @@ public class University implements Serializable {
     this.phoneNumber = phoneNumber;
   }
 
-  public static University getUserInstance() {
-    return userInstance;
+  public static University getUniversityInstance() {
+    return universityInstance;
   }
 
-  public static void setUserInstance(University userInstance) {
-    University.userInstance = userInstance;
+  public static void setUniversityInstance(University universityInstance) {
+    University.universityInstance = universityInstance;
   }
 
   public List<Department> getDepartments() {
