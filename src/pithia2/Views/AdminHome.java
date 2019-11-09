@@ -33,6 +33,12 @@ public class AdminHome extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+    GradesButton.addActionListener(e -> {
+      AdminGrades ag = new AdminGrades();
+      ag.setVisible(true);
+      dispose();
+    });
+
     PassChangeButton.addActionListener(e -> {
       PasswordChange pc = new PasswordChange();
       pc.setVisible(true);
