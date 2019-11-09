@@ -6,6 +6,8 @@ public class Administrator extends User implements Serializable {
 
   private int adminCode;
 
+  private static Administrator adminInstance = null;
+
   public Administrator(String username, String password, String fullname, String email,
       int adminCode) {
     super(username, password, fullname, email);
@@ -21,5 +23,13 @@ public class Administrator extends User implements Serializable {
 
   public void setAdminCode(int adminCode) {
     this.adminCode = adminCode;
+  }
+
+  public static Administrator getAdminInstance() {
+    return adminInstance;
+  }
+
+  public static void setAdminInstance(Administrator adminInstance) {
+    Administrator.adminInstance = adminInstance;
   }
 }
