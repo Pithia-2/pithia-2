@@ -24,6 +24,7 @@ public class AdminHome extends JFrame {
   private JLabel EmailInfo;
   private JLabel AdminCodeLabel;
   private JLabel AdminCodeInfo;
+  private JButton PassChangeButton;
 
   AdminHome() {
     add(RootPanel);
@@ -31,6 +32,12 @@ public class AdminHome extends JFrame {
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+    PassChangeButton.addActionListener(e -> {
+      PasswordChange pc = new PasswordChange();
+      pc.setVisible(true);
+      dispose();
+    });
 
     SignoutButton.addActionListener(e -> {
       Login login = new Login();
