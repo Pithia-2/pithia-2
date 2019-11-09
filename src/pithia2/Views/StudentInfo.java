@@ -38,12 +38,6 @@ public class StudentInfo extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(e -> {
-      StudentInfo info = new StudentInfo();
-      info.setVisible(true);
-      dispose();
-    });
-
     GradesButton.addActionListener(e -> {
       StudentGrades sg = new StudentGrades();
       sg.setVisible(true);
