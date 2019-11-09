@@ -1,15 +1,14 @@
 package pithia2.Views;
 
+import pithia2.GlobalConstants;
+import pithia2.Models.Administrator;
+import pithia2.Models.Student;
+import pithia2.Models.University;
+import pithia2.Models.User;
+
+import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
-import pithia2.GlobalConstants;
 
 public class Login extends JFrame {
 
@@ -33,6 +32,9 @@ public class Login extends JFrame {
     HomeButton.setOpaque(false);
     HomeButton.setContentAreaFilled(false);
 
+    ErrorLabel.setVisible(false);
+    ErrorLabel.setText("Wrong credentials.");
+
     this.addWindowListener(new WindowAdapter() {
       public void windowOpened(WindowEvent e) {
         UsernameField.requestFocus();
@@ -46,9 +48,28 @@ public class Login extends JFrame {
     });
 
     LoginButton.addActionListener(e -> {
-      StudentInfo si = new StudentInfo();
-      si.setVisible(true);
-      dispose();
+      login();
     });
+  }
+
+  private void login() {
+    String username, password;
+    username = UsernameField.getText();
+    password = PasswordField.getText();
+
+    for (User user : University.getUniversityInstance().getUsers()) {
+      if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+        if (user instanceof Student) {
+          Student.setStudentInstance((Student) user);
+          StudentInfo si = new StudentInfo();
+          si.setVisible(true);
+          dispose();
+        } else if (user instanceof Administrator) {
+          //TODO set admin instance and display admin page
+        }
+      } else {
+        ErrorLabel.setVisible(true);
+      }
+    }
   }
 }
