@@ -37,8 +37,8 @@ public class Departments extends JFrame {
   }
 
    private void ListDepartments() {
-    if (University.getUserInstance() != null) {
-      List<Department> departments = University.getUserInstance().getDepartments();
+    if (University.getUniversityInstance() != null) {
+      List<Department> departments = University.getUniversityInstance().getDepartments();
       DefaultTableModel model = (DefaultTableModel) DepartmentTable.getModel();
       model.addColumn("Name");
       model.addColumn("Phone Number");
