@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
+import pithia2.Models.Administrator;
 
 public class AdminGrades extends JFrame {
 
@@ -36,6 +37,7 @@ public class AdminGrades extends JFrame {
       Login login = new Login();
       login.setVisible(true);
       dispose();
+      Administrator.getAdminInstance().logout();
     });
   }
 }
