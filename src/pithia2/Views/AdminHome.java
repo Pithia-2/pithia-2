@@ -69,8 +69,7 @@ public class AdminHome extends JFrame {
     AdminInfo();
   }
 
-  private void AdminInfo()
-  {
+  private void AdminInfo() {
     Administrator admin = Administrator.getAdminInstance();
     UsernameInfo.setText(admin.getUsername());
     NameInfo.setText(admin.getFullname());
