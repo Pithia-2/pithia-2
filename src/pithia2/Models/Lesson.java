@@ -3,6 +3,7 @@ package pithia2.Models;
 import java.io.Serializable;
 
 public class Lesson implements Serializable {
+
   private int id;
   private String name;
   private int semester;
@@ -11,7 +12,7 @@ public class Lesson implements Serializable {
   private int credit;
   private String type;
 
-  public Lesson(int id, String name, int semester, int labHours, int theoryHours, int credit,
+  Lesson(int id, String name, int semester, int labHours, int theoryHours, int credit,
       String type) {
     this.id = id;
     this.name = name;
@@ -22,7 +23,7 @@ public class Lesson implements Serializable {
     this.type = type;
   }
 
-  public Lesson() {
+  Lesson() {
   }
 
   public int getId() {

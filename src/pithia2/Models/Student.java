@@ -28,7 +28,9 @@ public class Student extends User implements Serializable {
     studentInstance = this;
   }
 
-  public void logout() { studentInstance = null; }
+  public void logout() {
+    studentInstance = null;
+  }
 
   public static Student getStudentInstance() {
     return studentInstance;
