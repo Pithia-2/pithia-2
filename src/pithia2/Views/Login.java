@@ -1,14 +1,13 @@
 package pithia2.Views;
 
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Student;
 import pithia2.Models.University;
 import pithia2.Models.User;
-
-import javax.swing.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class Login extends JFrame {
 
@@ -75,10 +74,5 @@ public class Login extends JFrame {
         ErrorLabel.setVisible(true);
       }
     }
-  }
-
-  public String GetUsername()
-  {
-    return UsernameField.getText();
   }
 }

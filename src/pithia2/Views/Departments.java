@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +19,10 @@ public class Departments extends JFrame {
   private JButton BackButton;
   private JTable DepartmentTable;
   private JPanel Navbar;
-  private JLabel errorLabel;
+  private JLabel ErrorLabel;
+  private JPanel TablePanel;
+  private JScrollPane Departments;
+  private JPanel ErrorPanel;
 
   Departments() {
     add(DepartmentPanel);
@@ -52,7 +56,7 @@ public class Departments extends JFrame {
 
       DepartmentTable.setModel(model);
     } else {
-      errorLabel.setText("No data found.");
+      ErrorLabel.setText("No data found.");
     }
   }
 }
