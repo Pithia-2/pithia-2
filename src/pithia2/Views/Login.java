@@ -74,4 +74,9 @@ public class Login extends JFrame {
       }
     }
   }
+
+  public String GetUsername()
+  {
+    return UsernameField.getText();
+  }
 }
