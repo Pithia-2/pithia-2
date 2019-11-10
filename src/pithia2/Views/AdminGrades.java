@@ -12,7 +12,7 @@ public class AdminGrades extends JFrame {
 
   private JPanel RootPanel;
   private JPanel Navbar;
-  private JButton HomeButton;
+  private JButton BackButton;
   private JButton SignoutButton;
   private JTable StudentTable;
   private JButton ConfirmButton;
@@ -27,7 +27,7 @@ public class AdminGrades extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(e -> {
+    BackButton.addActionListener(e -> {
       AdminHome ah = new AdminHome();
       ah.setVisible(true);
       dispose();
