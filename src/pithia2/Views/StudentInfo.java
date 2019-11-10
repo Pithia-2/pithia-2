@@ -29,7 +29,6 @@ public class StudentInfo extends JFrame {
   private JPanel Navbar;
   private JButton PassChangeButton;
   private JButton SignoutButton;
-  private JLabel DontRemoveMeLabel;
   private JButton RegistrationButton;
   private JButton GradesButton;
 
