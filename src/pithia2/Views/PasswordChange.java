@@ -25,7 +25,7 @@ public class PasswordChange extends JFrame {
   private JButton ConfirmButton;
   private JLabel TitleLabel;
 
-  public PasswordChange() {
+  PasswordChange() {
     add(ChangePassPanel);
     setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
