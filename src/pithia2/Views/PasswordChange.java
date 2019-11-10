@@ -13,6 +13,8 @@ public class PasswordChange extends JFrame {
 
   private JPanel ChangePassPanel;
   private JButton BackButton;
+  private JButton HomeButton;
+  private JButton SignoutButton;
   private JLabel OldPassLabel;
   private javax.swing.JPasswordField OldPassField;
   private JLabel NewPassLabel;
@@ -21,7 +23,6 @@ public class PasswordChange extends JFrame {
   private javax.swing.JPasswordField ConfirmNewPassField;
   private JLabel MessageLabel;
   private JPanel Navbar;
-  private JButton SignoutButton;
   private JButton ConfirmButton;
   private JLabel TitleLabel;
 
@@ -35,6 +36,12 @@ public class PasswordChange extends JFrame {
     BackButton.addActionListener(e -> {
       StudentInfo studentInfo = new StudentInfo();
       studentInfo.setVisible(true);
+      dispose();
+    });
+
+    HomeButton.addActionListener(e -> {
+      Home home = new Home();
+      home.setVisible(true);
       dispose();
     });
 

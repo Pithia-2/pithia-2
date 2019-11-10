@@ -13,6 +13,7 @@ public class StudentGrades extends JFrame {
   private JPanel StudentGradesPanel;
   private JPanel Navbar;
   private JButton BackButton;
+  private JButton HomeButton;
   private JButton SignoutButton;
   private JTable table1;
 
@@ -26,6 +27,12 @@ public class StudentGrades extends JFrame {
     BackButton.addActionListener(e -> {
       StudentInfo studentInfo = new StudentInfo();
       studentInfo.setVisible(true);
+      dispose();
+    });
+
+    HomeButton.addActionListener(e -> {
+      Home home = new Home();
+      home.setVisible(true);
       dispose();
     });
 
