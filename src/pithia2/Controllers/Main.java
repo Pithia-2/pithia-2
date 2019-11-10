@@ -1,7 +1,6 @@
 package pithia2.Controllers;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import javax.swing.SwingUtilities;
@@ -23,8 +22,6 @@ public class Main {
 
       University.setUniversityInstance((University) is.readObject());
       is.close();
-    } catch (FileNotFoundException e) {
-      System.out.println(e.getMessage());
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
