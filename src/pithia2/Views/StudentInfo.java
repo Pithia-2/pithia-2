@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
 import pithia2.Models.Student;
+import pithia2.Models.Department;
 
 public class StudentInfo extends JFrame {
 
