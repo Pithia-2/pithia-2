@@ -21,7 +21,9 @@ public class Administrator extends User implements Serializable {
     adminInstance = this;
   }
 
-  public void logout() { adminInstance = null; }
+  public void logout() {
+    adminInstance = null;
+  }
 
   public int getAdminCode() {
     return adminCode;
