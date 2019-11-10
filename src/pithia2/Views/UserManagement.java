@@ -14,6 +14,7 @@ public class UserManagement extends JFrame {
   private JPanel RootPanel;
   private JPanel Navbar;
   private JButton BackButton;
+  private JButton HomeButton;
   private JButton SignoutButton;
   private JTable UserTable;
   private JPanel ConfirmPanel;
@@ -31,6 +32,12 @@ public class UserManagement extends JFrame {
     BackButton.addActionListener(e -> {
       AdminHome adminHome = new AdminHome();
       adminHome.setVisible(true);
+      dispose();
+    });
+
+    HomeButton.addActionListener(e -> {
+      Home home = new Home();
+      home.setVisible(true);
       dispose();
     });
 
