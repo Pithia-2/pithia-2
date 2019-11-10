@@ -29,7 +29,6 @@ public class StudentInfo extends JFrame {
   private JPanel Navbar;
   private JButton PassChangeButton;
   private JButton SignoutButton;
-  private JLabel DontRemoveMeLabel;
   private JButton RegistrationButton;
   private JButton GradesButton;
 
@@ -64,5 +63,17 @@ public class StudentInfo extends JFrame {
       dispose();
       Student.getStudentInstance().logout();
     });
+    ShowInfo();
+  }
+
+  private void ShowInfo() {
+    Student student = Student.getStudentInstance();
+    UsernameInfo.setText(student.getUsername());
+    NameInfo.setText(student.getFullname());
+    EmailInfo.setText(student.getEmail());
+    Department dep = student.getDepartment();
+    DepartmentInfo.setText(dep.getName());
+    SemesterInfo.setText(String.valueOf(student.getSemester()));
+    StudentCodeInfo.setText(String.valueOf(student.getStudentCode()));
   }
 }
