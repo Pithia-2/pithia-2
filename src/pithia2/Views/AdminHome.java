@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
-import pithia2.Models.User;
+import pithia2.Models.Administrator;
 
 public class AdminHome extends JFrame {
 
@@ -56,6 +56,7 @@ public class AdminHome extends JFrame {
       Login login = new Login();
       login.setVisible(true);
       dispose();
+      Administrator.getAdminInstance().logout();
     });
   }
 }

@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
+import pithia2.Models.Student;
 
 public class StudentGrades extends JFrame {
 
@@ -32,6 +33,7 @@ public class StudentGrades extends JFrame {
       Login login = new Login();
       login.setVisible(true);
       dispose();
+      Student.getStudentInstance().logout();
     });
   }
 }
