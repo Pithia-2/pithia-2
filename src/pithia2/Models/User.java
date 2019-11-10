@@ -24,8 +24,6 @@ public class User implements Serializable {
     userInstance = this;
   }
 
-  public void logout() { userInstance = null; }
-
   public static User getUserInstance() {
     return userInstance;
   }

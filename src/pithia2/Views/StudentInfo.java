@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
+import pithia2.Models.Department;
 import pithia2.Models.Student;
 
 public class StudentInfo extends JFrame {
@@ -60,7 +61,6 @@ public class StudentInfo extends JFrame {
       Login login = new Login();
       login.setVisible(true);
       dispose();
-      Student.getStudentInstance().logout();
     });
     ShowInfo();
   }

@@ -38,9 +38,7 @@ public class LessonRegistration extends JFrame {
       Login login = new Login();
       login.setVisible(true);
       dispose();
-      Student.getStudentInstance().logout();
     });
-
     showLesons();
   }
 

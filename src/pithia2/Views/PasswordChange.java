@@ -6,8 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
-import pithia2.Models.Administrator;
-import pithia2.Models.Student;
 
 public class PasswordChange extends JFrame {
 
@@ -42,8 +40,6 @@ public class PasswordChange extends JFrame {
       Login login = new Login();
       login.setVisible(true);
       dispose();
-      Student.getStudentInstance().logout();
-      Administrator.getAdminInstance().logout();
     });
   }
 }

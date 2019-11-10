@@ -63,6 +63,7 @@ public class Login extends JFrame {
           si.setVisible(true);
           dispose();
         } else if (user instanceof Administrator) {
+          //TODO set admin instance and display admin page
           Administrator.setAdminInstance((Administrator) user);
           AdminHome adminHome = new AdminHome();
           adminHome.setVisible(true);
