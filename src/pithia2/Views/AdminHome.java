@@ -25,6 +25,15 @@ public class AdminHome extends JFrame {
   private JLabel EmailInfo;
   private JLabel AdminCodeLabel;
   private JLabel AdminCodeInfo;
+  private JPanel UsernameLabelPanel;
+  private JPanel NameLabelPanel;
+  private JPanel EmailLabelPanel;
+  private JPanel CodeLabelPanel;
+  private JPanel SpacerPanel;
+  private JPanel UsernamePanel;
+  private JPanel NamePanel;
+  private JPanel EmailPanel;
+  private JPanel CodePanel;
 
   AdminHome() {
     add(RootPanel);

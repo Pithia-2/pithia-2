@@ -31,6 +31,19 @@ public class StudentInfo extends JFrame {
   private JButton SignoutButton;
   private JButton RegistrationButton;
   private JButton GradesButton;
+  private JPanel UsernameLabelPanel;
+  private JPanel NameLabelPanel;
+  private JPanel EmailLabelPanel;
+  private JPanel DepartmentLabelPanel;
+  private JPanel SemesterLabelPanel;
+  private JPanel CodeLabelPanel;
+  private JPanel UsernamePanel;
+  private JPanel NamePanel;
+  private JPanel EmailPanel;
+  private JPanel SpacerPanel;
+  private JPanel DepartmentPanel;
+  private JPanel SemesterPanel;
+  private JPanel CodePanel;
 
   StudentInfo() {
     add(InfoPanel);
@@ -77,8 +90,8 @@ public class StudentInfo extends JFrame {
     UsernameInfo.setText(student.getUsername());
     NameInfo.setText(student.getFullname());
     EmailInfo.setText(student.getEmail());
-    Department dep = student.getDepartment();
-    DepartmentInfo.setText(dep.getName());
+    Department department = student.getDepartment();
+    DepartmentInfo.setText(department.getName());
     SemesterInfo.setText(String.valueOf(student.getSemester()));
     StudentCodeInfo.setText(String.valueOf(student.getStudentCode()));
   }

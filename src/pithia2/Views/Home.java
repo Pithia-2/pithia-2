@@ -22,6 +22,9 @@ public class Home extends JFrame {
   private JButton DepartmentsButton;
   private JButton LessonsButton;
   private JLabel AppNameLabel;
+  private JPanel DetailsPanel;
+  private JPanel AppNamePanel;
+  private JPanel LogoPanel;
 
   public Home() {
     add(MainPanel);

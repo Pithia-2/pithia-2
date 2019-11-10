@@ -2,7 +2,9 @@ package pithia2.Views;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
@@ -15,7 +17,12 @@ public class StudentGrades extends JFrame {
   private JButton BackButton;
   private JButton HomeButton;
   private JButton SignoutButton;
-  private JTable table1;
+  private JTable GradesTable;
+  private JScrollPane Grades;
+  private JPanel GradesPanel;
+  private JPanel MiscPanel;
+  private JLabel CreditLabel;
+  private JLabel GradeLabel;
 
   StudentGrades() {
     add(StudentGradesPanel);
