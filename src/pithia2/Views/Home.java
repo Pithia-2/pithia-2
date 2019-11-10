@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
+import pithia2.Models.Administrator;
+import pithia2.Models.Student;
 
 public class Home extends JFrame {
 
@@ -39,9 +41,19 @@ public class Home extends JFrame {
     });
 
     LoginButton.addActionListener(e -> {
-      Login login = new Login();
-      login.setVisible(true);
-      dispose();
+      if (Student.getStudentInstance() != null) {
+        StudentInfo studentInfo = new StudentInfo();
+        studentInfo.setVisible(true);
+        dispose();
+      } else if (Administrator.getAdminInstance() != null) {
+        AdminHome adminHome = new AdminHome();
+        adminHome.setVisible(true);
+        dispose();
+      } else {
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+      }
     });
 
     DepartmentsButton.addActionListener(e -> {
