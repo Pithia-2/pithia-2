@@ -12,7 +12,6 @@ import pithia2.Models.Department;
 public class StudentInfo extends JFrame {
 
   private JPanel InfoPanel;
-  private JButton HomeButton;
   private JLabel UsernameLabel;
   private JLabel UsernameInfo;
   private JLabel NameLabel;
@@ -27,6 +26,7 @@ public class StudentInfo extends JFrame {
   private JLabel StudentCodeInfo;
   private JLabel TitleLabel;
   private JPanel Navbar;
+  private JButton HomeButton;
   private JButton PassChangeButton;
   private JButton SignoutButton;
   private JButton RegistrationButton;
@@ -38,6 +38,12 @@ public class StudentInfo extends JFrame {
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+    HomeButton.addActionListener(e -> {
+      Home home = new Home();
+      home.setVisible(true);
+      dispose();
+    });
 
     GradesButton.addActionListener(e -> {
       StudentGrades studentGrades = new StudentGrades();
