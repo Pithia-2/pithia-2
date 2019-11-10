@@ -12,7 +12,7 @@ import pithia2.Models.Student;
 public class PasswordChange extends JFrame {
 
   private JPanel ChangePassPanel;
-  private JButton HomeButton;
+  private JButton BackButton;
   private JLabel OldPassLabel;
   private javax.swing.JPasswordField OldPassField;
   private JLabel NewPassLabel;
@@ -32,7 +32,7 @@ public class PasswordChange extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(e -> {
+    BackButton.addActionListener(e -> {
       StudentInfo info = new StudentInfo();
       info.setVisible(true);
       dispose();

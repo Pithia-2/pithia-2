@@ -15,7 +15,7 @@ import pithia2.Models.University;
 public class Departments extends JFrame {
 
   private JPanel DepartmentPanel;
-  private JButton HomeButton;
+  private JButton BackButton;
   private JTable DepartmentTable;
   private JPanel Navbar;
   private JLabel errorLabel;
@@ -27,7 +27,7 @@ public class Departments extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(e -> {
+    BackButton.addActionListener(e -> {
       Home home = new Home();
       home.setVisible(true);
       dispose();

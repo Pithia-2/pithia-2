@@ -12,7 +12,7 @@ public class StudentGrades extends JFrame {
 
   private JPanel StudentGradesPanel;
   private JPanel Navbar;
-  private JButton HomeButton;
+  private JButton BackButton;
   private JButton SignoutButton;
   private JTable table1;
 
@@ -23,7 +23,7 @@ public class StudentGrades extends JFrame {
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    HomeButton.addActionListener(e -> {
+    BackButton.addActionListener(e -> {
       StudentInfo info = new StudentInfo();
       info.setVisible(true);
       dispose();
