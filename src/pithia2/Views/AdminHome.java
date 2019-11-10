@@ -18,7 +18,6 @@ public class AdminHome extends JFrame {
   private JLabel TitleLabel;
   private JLabel UsernameLabel;
   private JLabel UsernameInfo;
-  private JLabel DontRemoveMeLabel;
   private JLabel NameLabel;
   private JLabel NameInfo;
   private JLabel EmailLabel;
