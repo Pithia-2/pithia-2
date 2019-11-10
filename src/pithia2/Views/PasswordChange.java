@@ -1,5 +1,10 @@
 package pithia2.Views;
 
+import java.awt.Color;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,6 +13,8 @@ import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Student;
+import pithia2.Models.University;
+import pithia2.Models.User;
 
 public class PasswordChange extends JFrame {
 
@@ -52,5 +59,45 @@ public class PasswordChange extends JFrame {
       Student.getStudentInstance().logout();
       Administrator.getAdminInstance().logout();
     });
+    ConfirmButton.addActionListener(e-> {
+      changePassword();
+    });
+  }
+
+  private void changePassword() {
+    String oldPassword, newPassword, confirmPassword;
+    oldPassword = OldPassField.getText();
+    newPassword = NewPassField.getText();
+    confirmPassword = ConfirmNewPassField.getText();
+    List<User> users = University.getUniversityInstance().getUsers();
+
+    if (oldPassword.equals(Student.getStudentInstance().getPassword())) {
+      if (newPassword.equals(confirmPassword)) {
+        for (User user : users) {
+          if (user.getUsername().equals(Student.getStudentInstance().getUsername()) &&
+              user.getPassword().equals(Student.getStudentInstance().getPassword())) {
+            user.setPassword(newPassword);
+            Student.setStudentInstance((Student) user);
+            University.getUniversityInstance().setUsers(users);
+            try {
+              String path = GlobalConstants.UNIVERSITIES_PATH + "test.univer";
+              ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
+              os.writeObject(University.getUniversityInstance());
+              os.close();
+            } catch (IOException e) {
+              System.out.println(e.getMessage());
+            }
+            MessageLabel.setText("Password Changed!");
+            MessageLabel.setForeground(new Color(0, 100, 0));
+          }
+        }
+      } else {
+        MessageLabel.setText("Passwords don't match!");
+        MessageLabel.setForeground(new Color(200, 0, 0));
+      }
+    } else {
+      MessageLabel.setText("Wrong Password!");
+      MessageLabel.setForeground(new Color(200, 0, 0));
+    }
   }
 }
