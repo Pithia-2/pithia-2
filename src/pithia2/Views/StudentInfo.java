@@ -40,20 +40,20 @@ public class StudentInfo extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     GradesButton.addActionListener(e -> {
-      StudentGrades sg = new StudentGrades();
-      sg.setVisible(true);
+      StudentGrades studentGrades = new StudentGrades();
+      studentGrades.setVisible(true);
       dispose();
     });
 
     RegistrationButton.addActionListener(e -> {
-      LessonRegistration lr = new LessonRegistration();
-      lr.setVisible(true);
+      LessonRegistration lessonRegistration = new LessonRegistration();
+      lessonRegistration.setVisible(true);
       dispose();
     });
 
     PassChangeButton.addActionListener(e -> {
-      PasswordChange pc = new PasswordChange();
-      pc.setVisible(true);
+      PasswordChange passwordChange = new PasswordChange();
+      passwordChange.setVisible(true);
       dispose();
     });
 

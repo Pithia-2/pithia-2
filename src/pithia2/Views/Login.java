@@ -59,8 +59,8 @@ public class Login extends JFrame {
       if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
         if (user instanceof Student) {
           Student.setStudentInstance((Student) user);
-          StudentInfo si = new StudentInfo();
-          si.setVisible(true);
+          StudentInfo studentInfo = new StudentInfo();
+          studentInfo.setVisible(true);
           dispose();
         } else if (user instanceof Administrator) {
           Administrator.setAdminInstance((Administrator) user);

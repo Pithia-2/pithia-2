@@ -33,8 +33,8 @@ public class LessonRegistration extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     BackButton.addActionListener(e -> {
-      StudentInfo info = new StudentInfo();
-      info.setVisible(true);
+      StudentInfo studentInfo = new StudentInfo();
+      studentInfo.setVisible(true);
       dispose();
     });
 
