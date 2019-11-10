@@ -72,7 +72,7 @@ public class StudentInfo extends JFrame {
     NameInfo.setText(student.getFullname());
     EmailInfo.setText(student.getEmail());
     Department dep = student.getDepartment();
-    DepartmentInfo.setText("Name:  " + dep.getName() + "  Phone Number:  " + dep.getPhoneNumber());
+    DepartmentInfo.setText(dep.getName());
     SemesterInfo.setText(String.valueOf(student.getSemester()));
     StudentCodeInfo.setText(String.valueOf(student.getStudentCode()));
   }
