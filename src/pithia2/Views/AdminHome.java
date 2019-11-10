@@ -35,20 +35,20 @@ public class AdminHome extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     GradesButton.addActionListener(e -> {
-      AdminGrades ag = new AdminGrades();
-      ag.setVisible(true);
+      AdminGrades adminGrades = new AdminGrades();
+      adminGrades.setVisible(true);
       dispose();
     });
 
     UserManagementButton.addActionListener(e -> {
-      UserManagement um = new UserManagement();
-      um.setVisible(true);
+      UserManagement userManagement = new UserManagement();
+      userManagement.setVisible(true);
       dispose();
     });
 
     PassChangeButton.addActionListener(e -> {
-      PasswordChange pc = new PasswordChange();
-      pc.setVisible(true);
+      PasswordChange passwordChange = new PasswordChange();
+      passwordChange.setVisible(true);
       dispose();
     });
 

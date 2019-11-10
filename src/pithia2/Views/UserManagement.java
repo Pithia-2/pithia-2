@@ -29,8 +29,8 @@ public class UserManagement extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     BackButton.addActionListener(e -> {
-      AdminHome ah = new AdminHome();
-      ah.setVisible(true);
+      AdminHome adminHome = new AdminHome();
+      adminHome.setVisible(true);
       dispose();
     });
 
