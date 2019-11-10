@@ -12,6 +12,7 @@ public class AdminHome extends JFrame {
 
   private JPanel RootPanel;
   private JPanel Navbar;
+  private JButton HomeButton;
   private JButton SignoutButton;
   private JButton UserManagementButton;
   private JButton GradesButton;
@@ -24,7 +25,6 @@ public class AdminHome extends JFrame {
   private JLabel EmailInfo;
   private JLabel AdminCodeLabel;
   private JLabel AdminCodeInfo;
-  private JButton PassChangeButton;
 
   AdminHome() {
     add(RootPanel);
@@ -32,6 +32,12 @@ public class AdminHome extends JFrame {
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+    HomeButton.addActionListener(e -> {
+      Home home = new Home();
+      home.setVisible(true);
+      dispose();
+    });
 
     GradesButton.addActionListener(e -> {
       AdminGrades adminGrades = new AdminGrades();
@@ -42,12 +48,6 @@ public class AdminHome extends JFrame {
     UserManagementButton.addActionListener(e -> {
       UserManagement userManagement = new UserManagement();
       userManagement.setVisible(true);
-      dispose();
-    });
-
-    PassChangeButton.addActionListener(e -> {
-      PasswordChange passwordChange = new PasswordChange();
-      passwordChange.setVisible(true);
       dispose();
     });
 
