@@ -16,13 +16,14 @@ public class Main {
       throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-    String path = GlobalConstants.UNIVERSITIES_PATH + "test.univer";
+    String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
+
     try {
       ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
 
       University.setUniversityInstance((University) is.readObject());
       is.close();
-    } catch (IOException e) {
+    } catch (IOException | ClassNotFoundException e) {
       System.out.println(e.getMessage());
     }
 
