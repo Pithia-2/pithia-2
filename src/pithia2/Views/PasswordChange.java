@@ -78,7 +78,7 @@ public class PasswordChange extends JFrame {
             Student.setStudentInstance((Student) user);
             University.getUniversityInstance().setUsers(users);
             try {
-              String path = GlobalConstants.UNIVERSITIES_PATH + "test.univer";
+              String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
               ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
               os.writeObject(University.getUniversityInstance());
               os.close();

@@ -12,7 +12,7 @@ public class Lesson implements Serializable {
   private int credit;
   private String type;
 
-  Lesson(int id, String name, int semester, int labHours, int theoryHours, int credit,
+  public Lesson(int id, String name, int semester, int labHours, int theoryHours, int credit,
       String type) {
     this.id = id;
     this.name = name;
