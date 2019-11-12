@@ -3,6 +3,7 @@ package pithia2.Views;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,10 +22,11 @@ public class LessonRegistration extends JFrame {
   private JButton SignoutButton;
   private JTable RegistrationTable;
   private JPanel LessonRegistrationPanel;
-  private JButton ConfirmButton;
   private JPanel RegistrationTablePanel;
   private JScrollPane Registrations;
   private JPanel MiscPanel;
+  private JLabel CreditLabel;
+  private JButton NewRegistrationButton;
 
   LessonRegistration() {
     add(LessonRegistrationPanel);
@@ -50,6 +52,12 @@ public class LessonRegistration extends JFrame {
       login.setVisible(true);
       dispose();
       Student.getStudentInstance().logout();
+    });
+
+    NewRegistrationButton.addActionListener(e -> {
+      NewRegistration newRegistration = new NewRegistration();
+      newRegistration.setVisible(true);
+      dispose();
     });
 
     showLessons();
