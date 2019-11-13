@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pithia2.Views.UserManagement">
-  <grid id="27dc6" binding="RootPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="RootPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="1192" height="763"/>
@@ -11,7 +11,7 @@
       <grid id="2467f" binding="Navbar" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
             <minimum-size width="-1" height="50"/>
             <preferred-size width="372" height="34"/>
             <maximum-size width="-1" height="50"/>
@@ -55,7 +55,7 @@
           </component>
         </children>
       </grid>
-      <grid id="30440" binding="TablePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="30440" binding="TablePanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="50" bottom="0" right="50"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -63,20 +63,43 @@
         <properties/>
         <border type="none"/>
         <children>
-          <scrollpane id="bb0fc" binding="Users">
+          <scrollpane id="bb0fc" binding="Students">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
-            <border type="none" title="Users" noi18n="true" title-justification="2">
+            <border type="none" title="Students" noi18n="true" title-justification="2">
               <font name="Segoe UI Light" size="20"/>
             </border>
             <children>
-              <component id="b2fdb" class="javax.swing.JTable" binding="UserTable">
+              <component id="b2fdb" class="javax.swing.JTable" binding="StudentTable" custom-create="true">
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="true"/>
-                  <enabled value="false"/>
+                  <enabled value="true"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <intercellSpacing width="8" height="0"/>
+                  <rowHeight value="20"/>
+                  <rowMargin value="0"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <scrollpane id="483a7" binding="Administrators">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Administrators" noi18n="true" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+            </border>
+            <children>
+              <component id="c026f" class="javax.swing.JTable" binding="AdministratorTable" custom-create="true">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="true"/>
+                  <enabled value="true"/>
                   <font name="Segoe UI" size="13"/>
                   <gridColor color="-986896"/>
                   <intercellSpacing width="8" height="0"/>
@@ -88,15 +111,30 @@
           </scrollpane>
         </children>
       </grid>
-      <grid id="328de" binding="ConfirmPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="328de" binding="MiscPanel" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="100"/>
+            <preferred-size width="-1" height="100"/>
+            <maximum-size width="-1" height="100"/>
+          </grid>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="ee9ee" class="javax.swing.JButton" binding="ConfirmButton">
+          <component id="ee9ee" class="javax.swing.JButton" binding="SaveButton">
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Save"/>
+            </properties>
+          </component>
+          <component id="99d4e" class="javax.swing.JButton" binding="NewStudentButton">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="100" height="-1"/>
@@ -104,7 +142,40 @@
             </constraints>
             <properties>
               <font name="Segoe UI Light" size="16"/>
-              <text value="Confirm"/>
+              <text value="New Student"/>
+            </properties>
+          </component>
+          <component id="18e8c" class="javax.swing.JButton" binding="NewAdminButton">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="New Admin"/>
+            </properties>
+          </component>
+          <component id="50871" class="javax.swing.JButton" binding="DeleteStudentButton">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Delete Student"/>
+            </properties>
+          </component>
+          <component id="93bd4" class="javax.swing.JButton" binding="DeleteAdminButton">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Delete Admin"/>
             </properties>
           </component>
         </children>
