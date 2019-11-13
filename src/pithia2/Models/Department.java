@@ -41,4 +41,16 @@ public class Department implements Serializable {
   public void setLessons(List<Lesson> lessons) {
     this.lessons = lessons;
   }
+
+  public static Department search(String departmentName) {
+    List<Department> departments = University.getUniversityInstance().getDepartments();
+
+    for (Department department : departments) {
+      if (department.getName().equals(departmentName)) {
+        return department;
+      }
+    }
+
+    return departments.get(0);
+  }
 }
