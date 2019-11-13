@@ -1,7 +1,14 @@
 package pithia2.Views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -15,7 +22,11 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
 import pithia2.Models.Lesson;
+import pithia2.Models.RegisteredLesson;
+import pithia2.Models.Registration;
 import pithia2.Models.Student;
+import pithia2.Models.University;
+import pithia2.Models.User;
 
 public class NewRegistration extends JFrame {
 
@@ -92,6 +103,19 @@ public class NewRegistration extends JFrame {
         CreditLabel.setText("ΔΜ: " + calculateCredit() + "/42");
       }
     });
+
+    ConfirmButton.addActionListener(actionEvent -> {
+      List<Lesson> lessons = new ArrayList<Lesson>();
+      for (int i = 0; i < ChosenLessonTable.getRowCount(); i++) {
+        int id = Integer.parseInt(ChosenLessonTable.getValueAt(i, 0).toString());
+        for (Lesson lesson : Student.getStudentInstance().getDepartment().getLessons()) {
+          if (id == lesson.getId()){
+            lessons.add(lesson);
+          }
+        }
+      }
+      register(lessons);
+    });
   }
 
   private void createUIComponents() {
@@ -137,5 +161,33 @@ public class NewRegistration extends JFrame {
       }
     }
     return lessons;
+  }
+
+  private void register(List<Lesson> chosenLessons) {
+    Student currentStudent = Student.getStudentInstance();
+    Registration registration = new Registration( currentStudent.getRegistrations().size());
+    List<RegisteredLesson> registeredLessons = new ArrayList<RegisteredLesson>();
+    for (Lesson lesson : chosenLessons) {
+      RegisteredLesson registeredLesson = new RegisteredLesson(lesson);
+      registeredLessons.add(registeredLesson);
+    }
+    registration.setRegisteredLessons(registeredLessons);
+    currentStudent.getRegistrations().add(registration);
+    Student.setStudentInstance(currentStudent);
+
+    for (User user : University.getUniversityInstance().getUsers()) {
+      if (user.getUsername().equals(Student.getStudentInstance().getUsername())) {
+        ((Student) user).getRegistrations().add(registration);
+        String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
+
+        try {
+          ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
+          os.writeObject(University.getUniversityInstance());
+          os.close();
+        } catch (IOException e) {
+          System.out.println(e.getMessage());
+        }
+      }
+    }
   }
 }
