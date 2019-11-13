@@ -86,7 +86,6 @@ public class LessonRegistration extends JFrame {
       rowData[6] = lesson.getType();
       model.addRow(rowData);
     }
-
     RegistrationTable.setModel(model);
   }
 }
