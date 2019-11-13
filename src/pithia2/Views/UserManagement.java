@@ -1,5 +1,6 @@
 package pithia2.Views;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -67,6 +68,8 @@ public class UserManagement extends JFrame {
     DeleteStudentButton.addActionListener(e -> deleteStudent());
 
     DeleteAdminButton.addActionListener(e -> deleteAdmin());
+
+    SaveButton.addActionListener(e -> save());
   }
 
   private void createUIComponents() {
@@ -141,7 +144,6 @@ public class UserManagement extends JFrame {
   private void deleteStudent() {
     int row = StudentTable.getSelectedRow();
     String username = StudentTable.getValueAt(row, 0).toString();
-
     List<User> users = User.deleteUser(University.getUniversityInstance().getUsers(), username);
     University.getUniversityInstance().setUsers(users);
 
@@ -152,8 +154,38 @@ public class UserManagement extends JFrame {
   private void deleteAdmin() {
     int row = AdministratorTable.getSelectedRow();
     String username = AdministratorTable.getValueAt(row, 0).toString();
-
     List<User> users = User.deleteUser(University.getUniversityInstance().getUsers(), username);
+    University.getUniversityInstance().setUsers(users);
+
+    GlobalConstants.save();
+    loadTable();
+  }
+
+  private void save() {
+    List<User> users = new ArrayList<User>();
+
+    for (int i = 0; i < StudentTable.getRowCount(); i++) {
+      String username = StudentTable.getValueAt(i, 0).toString();
+      String password = StudentTable.getValueAt(i, 1).toString();
+      String fullname = StudentTable.getValueAt(i, 2).toString();
+      String email = StudentTable.getValueAt(i, 3).toString();
+      int studentCode = Integer.parseInt(StudentTable.getValueAt(i, 4).toString());
+      Department department = Department.search(StudentTable.getValueAt(i, 5).toString());
+      int semester = Integer.parseInt(StudentTable.getValueAt(i, 6).toString());
+
+      users.add(new Student(username, password, fullname, email, studentCode, department, semester));
+    }
+
+    for (int i = 0; i < AdministratorTable.getRowCount(); i++) {
+      String username = AdministratorTable.getValueAt(i, 0).toString();
+      String password = AdministratorTable.getValueAt(i, 1).toString();
+      String fullname = AdministratorTable.getValueAt(i, 2).toString();
+      String email = AdministratorTable.getValueAt(i, 3).toString();
+      int adminCode = Integer.parseInt(AdministratorTable.getValueAt(i, 4).toString());
+
+      users.add(new Administrator(username, password, fullname, email, adminCode));
+    }
+
     University.getUniversityInstance().setUsers(users);
 
     GlobalConstants.save();
