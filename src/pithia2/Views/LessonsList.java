@@ -43,28 +43,9 @@ public class LessonsList extends JFrame {
     BackButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        StudentInfo studentInfo = new StudentInfo();
-        studentInfo.setVisible(true);
-        dispose();
-      }
-    });
-
-    HomeButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
         Home home = new Home();
         home.setVisible(true);
         dispose();
-      }
-    });
-
-    SignoutButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Login login = new Login();
-        login.setVisible(true);
-        dispose();
-        Student.getStudentInstance().logout();
       }
     });
     ListLesons();
