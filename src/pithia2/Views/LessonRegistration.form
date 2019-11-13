@@ -70,7 +70,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="45f0" class="javax.swing.JTable" binding="RegistrationTable">
+              <component id="45f0" class="javax.swing.JTable" binding="RegistrationTable" custom-create="true">
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="false"/>

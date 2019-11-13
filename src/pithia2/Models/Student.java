@@ -72,4 +72,12 @@ public class Student extends User implements Serializable {
   public void setPassedLessons(List<RegisteredLesson> passedLessons) {
     this.passedLessons = passedLessons;
   }
+
+  public List<Registration> getRegistrations() {
+    return registrations;
+  }
+
+  public void setRegistrations(List<Registration> registrations) {
+    this.registrations = registrations;
+  }
 }
