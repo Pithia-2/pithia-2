@@ -1,5 +1,7 @@
 package pithia2.Views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,6 +46,8 @@ public class StudentInfo extends JFrame {
   private JPanel DepartmentPanel;
   private JPanel SemesterPanel;
   private JPanel CodePanel;
+  private JButton LessonsListButton;
+  private JButton lessonListButton;
 
   StudentInfo() {
     add(InfoPanel);
@@ -81,6 +85,15 @@ public class StudentInfo extends JFrame {
       login.setVisible(true);
       dispose();
       Student.getStudentInstance().logout();
+    });
+
+    LessonsListButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        LessonsList list = new LessonsList();
+        list.setVisible(true);
+        dispose();
+      }
     });
     ShowInfo();
   }
