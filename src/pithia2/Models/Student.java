@@ -10,6 +10,7 @@ public class Student extends User implements Serializable {
   private Department department;
   private int semester;
   private List<RegisteredLesson> passedLessons = new ArrayList<RegisteredLesson>();
+  private List<Registration> registrations = new ArrayList<Registration>();
 
   private static Student studentInstance = null;
 
