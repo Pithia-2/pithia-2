@@ -86,15 +86,6 @@ public class StudentInfo extends JFrame {
       dispose();
       Student.getStudentInstance().logout();
     });
-
-    LessonsListButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        LessonsList list = new LessonsList();
-        list.setVisible(true);
-        dispose();
-      }
-    });
     ShowInfo();
   }
 
