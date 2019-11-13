@@ -68,16 +68,25 @@ public class LessonRegistration extends JFrame {
     RegistrationTable = new JTable(tableModel);
     RegistrationTable.setDefaultEditor(Object.class, null);
 
-    if (!Student.getStudentInstance().getRegistrations().isEmpty()){
+    if (!Student.getStudentInstance().getRegistrations().isEmpty()) {
       int lastRegistrationIndex = Student.getStudentInstance().getRegistrations().size() - 1;
-      List<RegisteredLesson> registeredLessons = Student.getStudentInstance().getRegistrations().get(lastRegistrationIndex).getRegisteredLessons();
-      for (RegisteredLesson registeredLesson : registeredLessons){
+      List<RegisteredLesson> registeredLessons = Student.getStudentInstance().getRegistrations()
+          .get(lastRegistrationIndex).getRegisteredLessons();
+      for (RegisteredLesson registeredLesson : registeredLessons) {
         Object[] row = new Object[7];
-        row[0] = registeredLesson.getId(); row[1] = registeredLesson.getName(); row[2] = registeredLesson.getSemester();
-        row[3] = registeredLesson.getLabHours(); row[4] = registeredLesson.getTheoryHours(); row[5] = registeredLesson.getCredit();
+        row[0] = registeredLesson.getId();
+        row[1] = registeredLesson.getName();
+        row[2] = registeredLesson.getSemester();
+        row[3] = registeredLesson.getLabHours();
+        row[4] = registeredLesson.getTheoryHours();
+        row[5] = registeredLesson.getCredit();
         row[6] = registeredLesson.getType();
         ((DefaultTableModel) RegistrationTable.getModel()).addRow(row);
-        }
       }
+      NewRegistrationButton = new JButton("New Registration");
+      NewRegistrationButton.setEnabled(false);
+    } else {
+      NewRegistrationButton = new JButton("New Registration");
     }
   }
+}
