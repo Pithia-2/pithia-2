@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
 import pithia2.Models.Student;
 
@@ -49,5 +50,12 @@ public class StudentGrades extends JFrame {
       dispose();
       Student.getStudentInstance().logout();
     });
+  }
+
+  private void createUIComponents() {
+    String[] columns = {"ID", "Name", "Semester", "Credits", "Type", "Grade"};
+    DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
+    GradesTable = new JTable(tableModel);
+    GradesTable.setDefaultEditor(Object.class, null);
   }
 }
