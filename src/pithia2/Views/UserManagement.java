@@ -63,6 +63,10 @@ public class UserManagement extends JFrame {
     NewStudentButton.addActionListener(e -> createStudent());
 
     NewAdminButton.addActionListener(e -> createAdministrator());
+
+    DeleteStudentButton.addActionListener(e -> deleteStudent());
+
+    DeleteAdminButton.addActionListener(e -> deleteAdmin());
   }
 
   private void createUIComponents() {
@@ -128,6 +132,28 @@ public class UserManagement extends JFrame {
     Administrator admin = new Administrator("newAdmin" + increment, "-", "-", "-", 0);
     List<User> users = University.getUniversityInstance().getUsers();
     users.add(admin);
+    University.getUniversityInstance().setUsers(users);
+
+    GlobalConstants.save();
+    loadTable();
+  }
+
+  private void deleteStudent() {
+    int row = StudentTable.getSelectedRow();
+    String username = StudentTable.getValueAt(row, 0).toString();
+
+    List<User> users = User.deleteUser(University.getUniversityInstance().getUsers(), username);
+    University.getUniversityInstance().setUsers(users);
+
+    GlobalConstants.save();
+    loadTable();
+  }
+
+  private void deleteAdmin() {
+    int row = AdministratorTable.getSelectedRow();
+    String username = AdministratorTable.getValueAt(row, 0).toString();
+
+    List<User> users = User.deleteUser(University.getUniversityInstance().getUsers(), username);
     University.getUniversityInstance().setUsers(users);
 
     GlobalConstants.save();
