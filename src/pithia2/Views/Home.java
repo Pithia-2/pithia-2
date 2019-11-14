@@ -86,6 +86,7 @@ public class Home extends JFrame {
         dispose();
       }
     });
+    CreateButton.addActionListener(e -> create());
   }
 
   private void create() {
