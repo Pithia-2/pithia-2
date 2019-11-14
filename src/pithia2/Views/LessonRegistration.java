@@ -1,5 +1,6 @@
 package pithia2.Views;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
 import pithia2.Models.Department;
 import pithia2.Models.Lesson;
+import pithia2.Models.RegisteredLesson;
 import pithia2.Models.Student;
 
 public class LessonRegistration extends JFrame {
@@ -60,32 +62,46 @@ public class LessonRegistration extends JFrame {
       dispose();
     });
 
-    showLessons();
+    if (RegistrationTable.getRowCount() > 0){
+      CreditLabel.setText("Credits: " + calculateCredit() + "/42");
+    }else {
+      CreditLabel.setText("Credits: 0/42");
+    }
   }
 
-  private void showLessons() {
-    DefaultTableModel model = (DefaultTableModel) RegistrationTable.getModel();
-    model.addColumn("ID");
-    model.addColumn("Name");
-    model.addColumn("Semester");
-    model.addColumn("LabHours");
-    model.addColumn("TheoryHours");
-    model.addColumn("Credits");
-    model.addColumn("Type");
+  private void createUIComponents() {
+    String[] columns = {"ID", "Lesson", "Semester", "Lab Hours", "Theory Hours", "Credits", "Type"};
+    DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
+    RegistrationTable = new JTable(tableModel);
+    RegistrationTable.setDefaultEditor(Object.class, null);
 
-    Department department = Student.getStudentInstance().getDepartment();
-    List<Lesson> lessons = department.getLessons();
-    Object[] rowData = new Object[7];
-    for (Lesson lesson : lessons) {
-      rowData[0] = lesson.getId();
-      rowData[1] = lesson.getName();
-      rowData[2] = lesson.getSemester();
-      rowData[3] = lesson.getLabHours();
-      rowData[4] = lesson.getTheoryHours();
-      rowData[5] = lesson.getCredit();
-      rowData[6] = lesson.getType();
-      model.addRow(rowData);
+    if (!Student.getStudentInstance().getRegistrations().isEmpty()) {
+      int lastRegistrationIndex = Student.getStudentInstance().getRegistrations().size() - 1;
+      List<RegisteredLesson> registeredLessons = Student.getStudentInstance().getRegistrations()
+          .get(lastRegistrationIndex).getRegisteredLessons();
+      for (RegisteredLesson registeredLesson : registeredLessons) {
+        Object[] row = new Object[7];
+        row[0] = registeredLesson.getId();
+        row[1] = registeredLesson.getName();
+        row[2] = registeredLesson.getSemester();
+        row[3] = registeredLesson.getLabHours();
+        row[4] = registeredLesson.getTheoryHours();
+        row[5] = registeredLesson.getCredit();
+        row[6] = registeredLesson.getType();
+        ((DefaultTableModel) RegistrationTable.getModel()).addRow(row);
+      }
+      NewRegistrationButton = new JButton("New Registration");
+      NewRegistrationButton.setEnabled(false);
+    } else {
+      NewRegistrationButton = new JButton("New Registration");
     }
-    RegistrationTable.setModel(model);
+  }
+
+  private int calculateCredit() {
+    int credit = 0;
+    for (int i = 0; i < RegistrationTable.getRowCount(); i++) {
+      credit += Integer.parseInt(RegistrationTable.getValueAt(i, 5).toString());
+    }
+    return credit;
   }
 }
