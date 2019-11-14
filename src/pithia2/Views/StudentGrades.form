@@ -68,11 +68,20 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
-            <border type="none"/>
+            <border type="none" title="Grades" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+            </border>
             <children>
-              <component id="ffb78" class="javax.swing.JTable" binding="GradesTable">
+              <component id="ffb78" class="javax.swing.JTable" binding="GradesTable" custom-create="true">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <autoCreateRowSorter value="true"/>
+                  <background color="-986896"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <intercellSpacing width="8" height="0"/>
+                  <rowHeight value="20"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
@@ -92,7 +101,7 @@
             </constraints>
             <properties>
               <font name="Segoe UI" size="16"/>
-              <text value="ΔΜ: 112"/>
+              <text value="ΔΜ:"/>
             </properties>
           </component>
           <component id="24ce" class="javax.swing.JLabel" binding="GradeLabel">
@@ -101,7 +110,7 @@
             </constraints>
             <properties>
               <font name="Segoe UI" size="16"/>
-              <text value="MO: 8,12"/>
+              <text value="MO:"/>
             </properties>
           </component>
         </children>

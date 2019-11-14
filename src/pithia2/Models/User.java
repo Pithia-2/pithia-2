@@ -1,6 +1,7 @@
 package pithia2.Models;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -67,5 +68,11 @@ public class User implements Serializable {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public static List<User> deleteUser(List<User> users, String username) {
+    users.removeIf(user -> user.getUsername().equals(username));
+
+    return users;
   }
 }
