@@ -48,7 +48,34 @@ public class LessonsList extends JFrame {
         dispose();
       }
     });
+
     ListLesons();
+
+    DepartmentsDropdown.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        List<Department> departments = University.getUniversityInstance().getDepartments();
+        int DepIndex = DepartmentsDropdown.getSelectedIndex();
+        Department DepSelected = departments.get(DepIndex);
+        List<Lesson> lessons = DepSelected.getLessons();
+        DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
+        model.setRowCount(0);
+
+        Object[] rowData = new Object[7];
+        for (Lesson lesson : lessons) {
+          rowData[0] = lesson.getId();
+          rowData[1] = lesson.getName();
+          rowData[2] = lesson.getSemester();
+          rowData[3] = lesson.getLabHours();
+          rowData[4] = lesson.getTheoryHours();
+          rowData[5] = lesson.getCredit();
+          rowData[6] = lesson.getType();
+          model.addRow(rowData);
+        }
+
+        LessonsTable.setModel(model);
+      }
+    });
   }
 
   private void ListLesons() {
