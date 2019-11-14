@@ -94,7 +94,7 @@
             </constraints>
             <properties>
               <font name="Segoe UI" size="16"/>
-              <text value="ΔΜ: 0"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="e8cd6" class="javax.swing.JButton" binding="NewRegistrationButton" custom-create="true">

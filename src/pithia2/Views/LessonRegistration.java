@@ -1,5 +1,6 @@
 package pithia2.Views;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -60,6 +61,12 @@ public class LessonRegistration extends JFrame {
       newRegistration.setVisible(true);
       dispose();
     });
+
+    if (RegistrationTable.getRowCount() > 0){
+      CreditLabel.setText("Credits: " + calculateCredit() + "/42");
+    }else {
+      CreditLabel.setText("Credits: 0/42");
+    }
   }
 
   private void createUIComponents() {
@@ -88,5 +95,13 @@ public class LessonRegistration extends JFrame {
     } else {
       NewRegistrationButton = new JButton("New Registration");
     }
+  }
+
+  private int calculateCredit() {
+    int credit = 0;
+    for (int i = 0; i < RegistrationTable.getRowCount(); i++) {
+      credit += Integer.parseInt(RegistrationTable.getValueAt(i, 5).toString());
+    }
+    return credit;
   }
 }
