@@ -43,6 +43,7 @@ public class NewRegistration extends JFrame {
   private JButton ConfirmButton;
   private JScrollPane ChosenLessons;
   private JTable ChosenLessonTable;
+  private JLabel errorLabel;
   private int credit;
 
   NewRegistration() {
@@ -53,7 +54,7 @@ public class NewRegistration extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     credit = 0;
-    CreditLabel.setText("ΔΜ: " + credit + "/42");
+    CreditLabel.setText("Credits: " + credit + "/42");
 
     BackButton.addActionListener(e -> {
       LessonRegistration lessonRegistration = new LessonRegistration();
@@ -78,15 +79,16 @@ public class NewRegistration extends JFrame {
       @Override
       public void mouseClicked(MouseEvent mouseEvent) {
         super.mouseClicked(mouseEvent);
+        errorLabel.setVisible(false);
         DefaultTableModel tableModel = (DefaultTableModel) LessonTable.getModel();
         Vector<Object> selectedRow = (Vector<Object>) tableModel.getDataVector()
             .elementAt(LessonTable.getSelectedRow());
         if (Integer.parseInt(selectedRow.get(2).toString()) + calculateCredit() <= 42) {
           ((DefaultTableModel) ChosenLessonTable.getModel()).addRow(selectedRow);
           tableModel.removeRow(LessonTable.getSelectedRow());
-          CreditLabel.setText("ΔΜ: " + calculateCredit() + "/42");
+          CreditLabel.setText("Credits: " + calculateCredit() + "/42");
         } else {
-          System.out.println("out of credit");
+          errorLabel.setVisible(true);
         }
       }
     });
@@ -100,7 +102,8 @@ public class NewRegistration extends JFrame {
             .elementAt(ChosenLessonTable.getSelectedRow());
         ((DefaultTableModel) LessonTable.getModel()).addRow(selectedRow);
         tableModel2.removeRow(ChosenLessonTable.getSelectedRow());
-        CreditLabel.setText("ΔΜ: " + calculateCredit() + "/42");
+        CreditLabel.setText("Credits: " + calculateCredit() + "/42");
+        errorLabel.setVisible(false);
       }
     });
 
