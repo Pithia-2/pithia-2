@@ -115,6 +115,9 @@ public class NewRegistration extends JFrame {
         }
       }
       register(lessons);
+      LessonRegistration lessonRegistration = new LessonRegistration();
+      lessonRegistration.setVisible(true);
+      dispose();
     });
   }
 
