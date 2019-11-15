@@ -29,8 +29,8 @@ public class AdminGrades extends JFrame {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     BackButton.addActionListener(e -> {
-      AdminHome adminHome = new AdminHome();
-      adminHome.setVisible(true);
+      AdminInfo adminInfo = new AdminInfo();
+      adminInfo.setVisible(true);
       dispose();
     });
 

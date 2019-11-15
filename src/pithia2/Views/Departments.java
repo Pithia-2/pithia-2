@@ -37,10 +37,10 @@ public class Departments extends JFrame {
       dispose();
     });
 
-    ListDepartments();
+    listDepartments();
   }
 
-   private void ListDepartments() {
+   private void listDepartments() {
     if (University.getUniversityInstance() != null) {
       List<Department> departments = University.getUniversityInstance().getDepartments();
       DefaultTableModel model = (DefaultTableModel) DepartmentTable.getModel();

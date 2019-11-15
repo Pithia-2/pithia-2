@@ -66,8 +66,8 @@ public class Login extends JFrame {
           dispose();
         } else if (user instanceof Administrator) {
           Administrator.setAdminInstance((Administrator) user);
-          AdminHome adminHome = new AdminHome();
-          adminHome.setVisible(true);
+          AdminInfo adminInfo = new AdminInfo();
+          adminInfo.setVisible(true);
           dispose();
         }
       } else {

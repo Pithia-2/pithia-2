@@ -1,9 +1,6 @@
 package pithia2.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,9 +12,7 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
 import pithia2.Models.Department;
-
 import pithia2.Models.Lesson;
-import pithia2.Models.Student;
 import pithia2.Models.University;
 
 public class LessonsList extends JFrame {
@@ -33,57 +28,51 @@ public class LessonsList extends JFrame {
   private JLabel ErrorLabel;
   private JComboBox DepartmentsDropdown;
 
-  public LessonsList() {
+  LessonsList() {
     add(LessonsListPanel);
     setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    BackButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Home home = new Home();
-        home.setVisible(true);
-        dispose();
-      }
+    BackButton.addActionListener(e -> {
+      Home home = new Home();
+      home.setVisible(true);
+      dispose();
     });
 
-    ListLesons();
+    DepartmentsDropdown.addActionListener(e -> {
+      List<Department> departments = University.getUniversityInstance().getDepartments();
+      int DepIndex = DepartmentsDropdown.getSelectedIndex();
+      Department DepSelected = departments.get(DepIndex);
+      List<Lesson> lessons = DepSelected.getLessons();
+      DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
+      model.setRowCount(0);
 
-    DepartmentsDropdown.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        List<Department> departments = University.getUniversityInstance().getDepartments();
-        int DepIndex = DepartmentsDropdown.getSelectedIndex();
-        Department DepSelected = departments.get(DepIndex);
-        List<Lesson> lessons = DepSelected.getLessons();
-        DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
-        model.setRowCount(0);
-
-        Object[] rowData = new Object[7];
-        for (Lesson lesson : lessons) {
-          rowData[0] = lesson.getId();
-          rowData[1] = lesson.getName();
-          rowData[2] = lesson.getSemester();
-          rowData[3] = lesson.getLabHours();
-          rowData[4] = lesson.getTheoryHours();
-          rowData[5] = lesson.getCredit();
-          rowData[6] = lesson.getType();
-          model.addRow(rowData);
-        }
-
-        LessonsTable.setModel(model);
+      Object[] rowData = new Object[7];
+      for (Lesson lesson : lessons) {
+        rowData[0] = lesson.getId();
+        rowData[1] = lesson.getName();
+        rowData[2] = lesson.getSemester();
+        rowData[3] = lesson.getLabHours();
+        rowData[4] = lesson.getTheoryHours();
+        rowData[5] = lesson.getCredit();
+        rowData[6] = lesson.getType();
+        model.addRow(rowData);
       }
+
+      LessonsTable.setModel(model);
     });
+
+    listLessons();
   }
 
-  private void ListLesons() {
+  private void listLessons() {
     if (University.getUniversityInstance() != null) {
       List<Department> departments = University.getUniversityInstance().getDepartments();
 
-      for (int i = 0; i < departments.size(); i++) {
-        DepartmentsDropdown.addItem(departments.get(i).getName());
+      for (Department department : departments) {
+        DepartmentsDropdown.addItem(department.getName());
       }
 
       int DepIndex = DepartmentsDropdown.getSelectedIndex();
