@@ -8,7 +8,7 @@ import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 
-public class AdminHome extends JFrame {
+public class AdminInfo extends JFrame {
 
   private JPanel RootPanel;
   private JPanel Navbar;
@@ -35,7 +35,7 @@ public class AdminHome extends JFrame {
   private JPanel EmailPanel;
   private JPanel CodePanel;
 
-  AdminHome() {
+  AdminInfo() {
     add(RootPanel);
     setSize(GlobalConstants.FRAME_WIDTH, GlobalConstants.FRAME_HEIGHT);
     setResizable(false);
@@ -66,10 +66,11 @@ public class AdminHome extends JFrame {
       dispose();
       Administrator.getAdminInstance().logout();
     });
-    AdminInfo();
+
+    showInfo();
   }
 
-  private void AdminInfo() {
+  private void showInfo() {
     Administrator admin = Administrator.getAdminInstance();
     UsernameInfo.setText(admin.getUsername());
     NameInfo.setText(admin.getFullname());

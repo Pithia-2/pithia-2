@@ -57,9 +57,8 @@ public class PasswordChange extends JFrame {
       dispose();
       Student.getStudentInstance().logout();
     });
-    ConfirmButton.addActionListener(e-> {
-      changePassword();
-    });
+
+    ConfirmButton.addActionListener(e -> changePassword());
   }
 
   private void changePassword() {

@@ -1,7 +1,5 @@
 package pithia2.Views;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
@@ -62,8 +60,8 @@ public class Home extends JFrame {
         studentInfo.setVisible(true);
         dispose();
       } else if (Administrator.getAdminInstance() != null) {
-        AdminHome adminHome = new AdminHome();
-        adminHome.setVisible(true);
+        AdminInfo adminInfo = new AdminInfo();
+        adminInfo.setVisible(true);
         dispose();
       } else {
         Login login = new Login();
@@ -78,14 +76,12 @@ public class Home extends JFrame {
       dispose();
     });
 
-    LessonsButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        LessonsList list = new LessonsList();
-        list.setVisible(true);
-        dispose();
-      }
+    LessonsButton.addActionListener(e -> {
+      LessonsList list = new LessonsList();
+      list.setVisible(true);
+      dispose();
     });
+
     CreateButton.addActionListener(e -> create());
   }
 

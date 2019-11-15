@@ -1,6 +1,5 @@
 package pithia2.Views;
 
-import java.awt.Color;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,8 +10,6 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
-import pithia2.Models.Department;
-import pithia2.Models.Lesson;
 import pithia2.Models.RegisteredLesson;
 import pithia2.Models.Student;
 
