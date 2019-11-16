@@ -27,6 +27,8 @@ public class LessonsList extends JFrame {
   private JPanel ErrorPanel;
   private JLabel ErrorLabel;
   private JComboBox DepartmentsDropdown;
+  private List<Department> departments = University.getUniversityInstance().getDepartments();
+  private DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
 
   LessonsList() {
     add(LessonsListPanel);
@@ -41,44 +43,21 @@ public class LessonsList extends JFrame {
       dispose();
     });
 
-    DepartmentsDropdown.addActionListener(e -> {
-      List<Department> departments = University.getUniversityInstance().getDepartments();
-      int DepIndex = DepartmentsDropdown.getSelectedIndex();
-      Department DepSelected = departments.get(DepIndex);
-      List<Lesson> lessons = DepSelected.getLessons();
-      DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
-      model.setRowCount(0);
-
-      Object[] rowData = new Object[7];
-      for (Lesson lesson : lessons) {
-        rowData[0] = lesson.getId();
-        rowData[1] = lesson.getName();
-        rowData[2] = lesson.getSemester();
-        rowData[3] = lesson.getLabHours();
-        rowData[4] = lesson.getTheoryHours();
-        rowData[5] = lesson.getCredit();
-        rowData[6] = lesson.getType();
-        model.addRow(rowData);
-      }
-
-      LessonsTable.setModel(model);
-    });
-
     listLessons();
+    addRows();
+
+    DepartmentsDropdown.addActionListener(e -> {
+      model.setRowCount(0);
+      addRows();
+    });
   }
 
-  private void listLessons() {
-    if (University.getUniversityInstance() != null) {
-      List<Department> departments = University.getUniversityInstance().getDepartments();
 
+
+  private void listLessons() {
       for (Department department : departments) {
         DepartmentsDropdown.addItem(department.getName());
       }
-
-      int DepIndex = DepartmentsDropdown.getSelectedIndex();
-      Department DepSelected = departments.get(DepIndex);
-      List<Lesson> lessons = DepSelected.getLessons();
-      DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
       model.addColumn("ID");
       model.addColumn("Name");
       model.addColumn("Semester");
@@ -86,22 +65,23 @@ public class LessonsList extends JFrame {
       model.addColumn("Theory Hours");
       model.addColumn("Credits");
       model.addColumn("Type");
+  }
 
-      Object[] rowData = new Object[7];
-      for (Lesson lesson : lessons) {
-        rowData[0] = lesson.getId();
-        rowData[1] = lesson.getName();
-        rowData[2] = lesson.getSemester();
-        rowData[3] = lesson.getLabHours();
-        rowData[4] = lesson.getTheoryHours();
-        rowData[5] = lesson.getCredit();
-        rowData[6] = lesson.getType();
-        model.addRow(rowData);
-      }
-
-      LessonsTable.setModel(model);
-    } else {
-      ErrorLabel.setText("No data found.");
+  private void addRows(){
+    int DepIndex = DepartmentsDropdown.getSelectedIndex();
+    Department DepSelected = departments.get(DepIndex);
+    List<Lesson> lessons = DepSelected.getLessons();
+    Object[] rowData = new Object[7];
+    for (Lesson lesson : lessons) {
+      rowData[0] = lesson.getId();
+      rowData[1] = lesson.getName();
+      rowData[2] = lesson.getSemester();
+      rowData[3] = lesson.getLabHours();
+      rowData[4] = lesson.getTheoryHours();
+      rowData[5] = lesson.getCredit();
+      rowData[6] = lesson.getType();
+      model.addRow(rowData);
     }
+    LessonsTable.setModel(model);
   }
 }
