@@ -26,9 +26,7 @@ public class LessonsList extends JFrame {
   private JScrollPane LessonsScrollPane;
   private JPanel ErrorPanel;
   private JLabel ErrorLabel;
-  private JComboBox DepartmentsDropdown;
-  private List<Department> departments = University.getUniversityInstance().getDepartments();
-  private DefaultTableModel model = (DefaultTableModel) LessonsTable.getModel();
+  private JComboBox<String> DepartmentsDropdown;
 
   LessonsList() {
     add(LessonsListPanel);
@@ -43,34 +41,29 @@ public class LessonsList extends JFrame {
       dispose();
     });
 
-    listLessons();
+    DepartmentsDropdown.addActionListener(e -> addRows());
+  }
+
+  private void createUIComponents() {
+    String[] columns = {"ID", "Lesson", "Semester", "Lab Hours", "Theory Hours", "Credits", "Type"};
+    DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
+    LessonsTable = new JTable(tableModel);
+    LessonsTable.setDefaultEditor(Object.class, null);
+
+    List<Department> departments = University.getUniversityInstance().getDepartments();
+    DepartmentsDropdown = new JComboBox<>();
+    for (Department department : departments) {
+      DepartmentsDropdown.addItem(department.getName());
+    }
     addRows();
-
-    DepartmentsDropdown.addActionListener(e -> {
-      model.setRowCount(0);
-      addRows();
-    });
   }
 
-
-
-  private void listLessons() {
-      for (Department department : departments) {
-        DepartmentsDropdown.addItem(department.getName());
-      }
-      model.addColumn("ID");
-      model.addColumn("Name");
-      model.addColumn("Semester");
-      model.addColumn("Lab Hours");
-      model.addColumn("Theory Hours");
-      model.addColumn("Credits");
-      model.addColumn("Type");
-  }
-
-  private void addRows(){
-    int DepIndex = DepartmentsDropdown.getSelectedIndex();
-    Department DepSelected = departments.get(DepIndex);
+  private void addRows() {
+    ((DefaultTableModel) LessonsTable.getModel()).setRowCount(0);
+    List<Department> departments = University.getUniversityInstance().getDepartments();
+    Department DepSelected = departments.get(DepartmentsDropdown.getSelectedIndex());
     List<Lesson> lessons = DepSelected.getLessons();
+
     Object[] rowData = new Object[7];
     for (Lesson lesson : lessons) {
       rowData[0] = lesson.getId();
@@ -80,8 +73,7 @@ public class LessonsList extends JFrame {
       rowData[4] = lesson.getTheoryHours();
       rowData[5] = lesson.getCredit();
       rowData[6] = lesson.getType();
-      model.addRow(rowData);
+      ((DefaultTableModel) LessonsTable.getModel()).addRow(rowData);
     }
-    LessonsTable.setModel(model);
   }
 }

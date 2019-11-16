@@ -34,7 +34,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="ac0ff" class="javax.swing.JTable" binding="LessonsTable">
+          <component id="ac0ff" class="javax.swing.JTable" binding="LessonsTable" custom-create="true">
             <constraints/>
             <properties/>
           </component>
@@ -60,7 +60,7 @@
           </component>
         </children>
       </grid>
-      <component id="751a4" class="javax.swing.JComboBox" binding="DepartmentsDropdown">
+      <component id="751a4" class="javax.swing.JComboBox" binding="DepartmentsDropdown" custom-create="true">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
