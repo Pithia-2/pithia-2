@@ -2,9 +2,6 @@ package pithia2.Views;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -181,13 +178,7 @@ public class NewRegistration extends JFrame {
         ((Student) user).getRegistrations().add(registration);
         String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
 
-        try {
-          ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
-          os.writeObject(University.getUniversityInstance());
-          os.close();
-        } catch (IOException e) {
-          System.out.println(e.getMessage());
-        }
+        GlobalConstants.save();
       }
     }
   }
