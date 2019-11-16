@@ -1,9 +1,6 @@
 package pithia2.Views;
 
 import java.awt.Color;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -76,14 +73,7 @@ public class PasswordChange extends JFrame {
             user.setPassword(newPassword);
             Student.setStudentInstance((Student) user);
             University.getUniversityInstance().setUsers(users);
-            try {
-              String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
-              ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
-              os.writeObject(University.getUniversityInstance());
-              os.close();
-            } catch (IOException e) {
-              System.out.println(e.getMessage());
-            }
+            GlobalConstants.save();
             MessageLabel.setText("Password Changed!");
             MessageLabel.setForeground(new Color(0, 100, 0));
           }
