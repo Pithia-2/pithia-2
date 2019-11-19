@@ -36,7 +36,8 @@ public class NewRegistration extends JFrame {
   private JButton ConfirmButton;
   private JScrollPane ChosenLessons;
   private JTable ChosenLessonTable;
-  private JLabel errorLabel;
+  private JLabel ErrorLabel;
+  private JPanel ErrorPanel;
 
   NewRegistration() {
     add(RootPanel);
@@ -71,7 +72,7 @@ public class NewRegistration extends JFrame {
       @Override
       public void mouseClicked(MouseEvent mouseEvent) {
         super.mouseClicked(mouseEvent);
-        errorLabel.setVisible(false);
+        ErrorLabel.setVisible(false);
         DefaultTableModel tableModel = (DefaultTableModel) LessonTable.getModel();
         Vector<Object> selectedRow = (Vector<Object>) tableModel.getDataVector()
             .elementAt(LessonTable.getSelectedRow());
@@ -80,7 +81,7 @@ public class NewRegistration extends JFrame {
           tableModel.removeRow(LessonTable.getSelectedRow());
           CreditLabel.setText("Credits: " + calculateCredit() + "/42");
         } else {
-          errorLabel.setVisible(true);
+          ErrorLabel.setVisible(true);
         }
       }
     });
@@ -95,7 +96,7 @@ public class NewRegistration extends JFrame {
         ((DefaultTableModel) LessonTable.getModel()).addRow(selectedRow);
         tableModel2.removeRow(ChosenLessonTable.getSelectedRow());
         CreditLabel.setText("Credits: " + calculateCredit() + "/42");
-        errorLabel.setVisible(false);
+        ErrorLabel.setVisible(false);
       }
     });
 
