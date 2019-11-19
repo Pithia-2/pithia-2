@@ -176,7 +176,7 @@ public class NewRegistration extends JFrame {
     for (User user : University.getUniversityInstance().getUsers()) {
       if (user.getUsername().equals(Student.getStudentInstance().getUsername())) {
         ((Student) user).getRegistrations().add(registration);
-        String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
+        String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni"; // TODO Remove
 
         GlobalConstants.save();
       }

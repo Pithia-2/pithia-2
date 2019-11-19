@@ -76,12 +76,11 @@
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="true"/>
+                  <background color="-986896"/>
                   <enabled value="true"/>
                   <font name="Segoe UI" size="13"/>
                   <gridColor color="-986896"/>
-                  <intercellSpacing width="8" height="0"/>
                   <rowHeight value="20"/>
-                  <rowMargin value="0"/>
                 </properties>
               </component>
             </children>
@@ -99,12 +98,11 @@
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="true"/>
+                  <background color="-986896"/>
                   <enabled value="true"/>
                   <font name="Segoe UI" size="13"/>
                   <gridColor color="-986896"/>
-                  <intercellSpacing width="8" height="0"/>
                   <rowHeight value="20"/>
-                  <rowMargin value="0"/>
                 </properties>
               </component>
             </children>
