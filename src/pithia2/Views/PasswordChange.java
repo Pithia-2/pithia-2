@@ -28,6 +28,7 @@ public class PasswordChange extends JFrame {
   private JPanel Navbar;
   private JButton ConfirmButton;
   private JLabel TitleLabel;
+  private JPanel MessagePanel;
 
   PasswordChange() {
     add(ChangePassPanel);
