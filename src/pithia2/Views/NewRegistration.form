@@ -68,12 +68,18 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
-            <border type="none" title="Available Lessons"/>
+            <border type="none" title="Available Lessons" noi18n="true" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+            </border>
             <children>
               <component id="64494" class="javax.swing.JTable" binding="LessonTable" custom-create="true">
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="false"/>
+                  <background color="-986896"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <rowHeight value="20"/>
                 </properties>
               </component>
             </children>
@@ -83,12 +89,18 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
-            <border type="none" title="Chosen Lessons"/>
+            <border type="none" title="Chosen Lessons" noi18n="true" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+            </border>
             <children>
               <component id="56b9" class="javax.swing.JTable" binding="ChosenLessonTable" custom-create="true">
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="false"/>
+                  <background color="-986896"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <rowHeight value="20"/>
                 </properties>
               </component>
             </children>

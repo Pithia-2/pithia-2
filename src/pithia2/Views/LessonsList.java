@@ -18,15 +18,16 @@ import pithia2.Models.University;
 public class LessonsList extends JFrame {
 
   private JPanel LessonsListPanel;
-  private JPanel Navbar;
   private JButton BackButton;
   private JButton HomeButton;
   private JButton SignoutButton;
   private JTable LessonsTable;
-  private JScrollPane LessonsScrollPane;
+  private JScrollPane Lessons;
   private JPanel ErrorPanel;
   private JLabel ErrorLabel;
   private JComboBox<String> DepartmentsDropdown;
+  private JPanel LessonsPanel;
+  private JPanel Navbar;
 
   LessonsList() {
     add(LessonsListPanel);
