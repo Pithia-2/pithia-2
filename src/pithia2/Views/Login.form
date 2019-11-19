@@ -77,7 +77,7 @@
               </grid>
             </constraints>
             <properties>
-              <font size="14" style="1"/>
+              <font name="Segoe UI" size="16" style="1"/>
               <foreground color="-3670016"/>
               <text value="Wrong credentials."/>
               <visible value="false"/>
