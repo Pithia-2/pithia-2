@@ -104,8 +104,8 @@ public class Home extends JFrame {
     lessons1.add(new Lesson(1501, "Lesson15", 5, 2, 4, 6, "Y"));
     lessons1.add(new Lesson(1601, "Lesson16", 6, 0, 6, 6, "E"));
     lessons1.add(new Lesson(1701, "Lesson17", 7, 2, 4, 6, "YE"));
-    lessons1.add(new Lesson(1801, "Lesson18", 8, 0, 6, 6, "E"));
-    lessons1.add(new Lesson(1901, "Lesson19", 9, 2, 4, 6, "YE"));
+    lessons1.add(new Lesson(1901, "Lesson18", 9, 0, 6, 6, "E"));
+    lessons1.add(new Lesson(1902, "Lesson19", 9, 2, 4, 6, "YE"));
 
     lessons2.add(new Lesson(1101, "Lesson21", 1, 0, 6, 6, "E"));
     lessons2.add(new Lesson(1102, "Lesson22", 1, 2, 4, 6, "Y"));
