@@ -154,7 +154,7 @@
             <properties>
               <font name="Segoe UI" size="16" style="1"/>
               <foreground color="-3670016"/>
-              <text value="Label"/>
+              <text value=""/>
             </properties>
           </component>
         </children>

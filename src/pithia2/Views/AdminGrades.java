@@ -139,11 +139,9 @@ public class AdminGrades extends JFrame {
   private void save() {
     if (selectedStudent == null) {
       ErrorLabel.setText("Select a student first.");
-    }
-    else if (lastRegistration == null) {
+    } else if (lastRegistration == null) {
       ErrorLabel.setText("Student has no registrations.");
-    }
-    else {
+    } else {
       List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
       int index = 0;
       for (RegisteredLesson registeredLesson : registeredLessons) {
