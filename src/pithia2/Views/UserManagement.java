@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -34,6 +35,8 @@ public class UserManagement extends JFrame {
   private JButton NewAdminButton;
   private JButton DeleteStudentButton;
   private JButton DeleteAdminButton;
+  private JPanel ErrorPanel;
+  private JLabel ErrorLabel;
 
   UserManagement() {
     add(RootPanel);
