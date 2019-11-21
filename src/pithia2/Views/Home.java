@@ -41,10 +41,7 @@ public class Home extends JFrame {
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    Details.setText(
-        "<html>Το Διεθνές Πανεπιστήμιο της Ελλάδος (ΔΙ.ΠΑ.Ε.) ιδρύθηκε το 2005 με έδρα την Θεσσαλονίκη. "
-            + "Το πανεπιστήμιο αποτελείται απο 7 σχολές σε Θεσσαλονίκη, Δράμα, Καβάλα και Σέρρες.</html>"
-    );
+    Details.setText(University.getUniversityInstance().getDetails());
 
     this.addWindowListener(new WindowAdapter() {
       public void windowOpened(WindowEvent e) {
@@ -85,7 +82,8 @@ public class Home extends JFrame {
 
   private void create() {
     University university = new University("IHU", "Sindos", "mail@ihu.gr", "https://ihu.gr",
-        "2310123456");
+        "2310123456", "<html>Το Διεθνές Πανεπιστήμιο της Ελλάδος (ΔΙ.ΠΑ.Ε.) ιδρύθηκε το 2005 με έδρα την Θεσσαλονίκη. "
+        + "Το πανεπιστήμιο αποτελείται απο 7 σχολές σε Θεσσαλονίκη, Δράμα, Καβάλα και Σέρρες.</html>");
 
     Department department1 = new Department("Department1", "2310747474");
     Department department2 = new Department("Department2", "210-1-347-455");
