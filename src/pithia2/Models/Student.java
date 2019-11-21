@@ -80,4 +80,10 @@ public class Student extends User implements Serializable {
   public void setRegistrations(List<Registration> registrations) {
     this.registrations = registrations;
   }
+
+  public Registration getLastRegistration() {
+    int lastRegistration = registrations.size() - 1;
+
+    return registrations.get(lastRegistration);
+  }
 }
