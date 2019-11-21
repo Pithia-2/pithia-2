@@ -4,5 +4,5 @@
 # Java export folder
 out
 
-# Files produced when saving data
-Universities/*.uni
+# Generated files directory
+Universities
