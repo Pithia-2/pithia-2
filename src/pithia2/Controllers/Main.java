@@ -16,8 +16,7 @@ public class Main {
       throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-    String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
-
+    String path = GlobalConstants.UNIVERSITIES_PATH + "IHU.uni";
     try {
       ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
 

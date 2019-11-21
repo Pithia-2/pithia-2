@@ -7,9 +7,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Department;
@@ -33,7 +46,7 @@ public class Home extends JFrame {
   private JPanel DetailsPanel;
   private JPanel AppNamePanel;
   private JPanel LogoPanel;
-  private JComboBox comboBox1;
+  private JComboBox<String> UniversitiesDropDown;
 
   public Home() {
     add(MainPanel);
@@ -41,7 +54,7 @@ public class Home extends JFrame {
     setResizable(false);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    Details.setText(University.getUniversityInstance().getDetails());
+    updatePage();
 
     this.addWindowListener(new WindowAdapter() {
       public void windowOpened(WindowEvent e) {
@@ -77,82 +90,196 @@ public class Home extends JFrame {
       dispose();
     });
 
-    CreateButton.addActionListener(e -> create());
+    CreateButton.addActionListener(e -> {
+      String selectedUniversity = UniversitiesDropDown
+          .getItemAt(UniversitiesDropDown.getSelectedIndex());
+      create(selectedUniversity);
+    });
+
+    UniversitiesDropDown.addActionListener(e -> {
+      List<University> universities = readUniversities();
+      University selectedUniversity = universities.get(UniversitiesDropDown.getSelectedIndex());
+      University.setUniversityInstance(selectedUniversity);
+      updatePage();
+    });
   }
 
-  private void create() {
-    University university = new University("IHU", "Sindos", "mail@ihu.gr", "https://ihu.gr",
-        "2310123456", "<html>Το Διεθνές Πανεπιστήμιο της Ελλάδος (ΔΙ.ΠΑ.Ε.) ιδρύθηκε το 2005 με έδρα την Θεσσαλονίκη. "
-        + "Το πανεπιστήμιο αποτελείται απο 7 σχολές σε Θεσσαλονίκη, Δράμα, Καβάλα και Σέρρες.</html>");
+  private void create(String selectedUniversity) {
+    if (selectedUniversity.equals("IHU")) {
+      University university = new University("International Hellenic University", "IHU", "Sindos",
+          "mail@ihu.gr", "https://ihu.gr",
+          "2310123456",
+          "The International Hellenic University waw founded in 2005 in Thessaloniki. It consists of 7 schools in multiple cities.");
 
-    Department department1 = new Department("Department1", "2310747474");
-    Department department2 = new Department("Department2", "210-1-347-455");
+      Department department1 = new Department("Department1", "2310747474");
+      Department department2 = new Department("Department2", "210-1-347-455");
 
-    List<User> users = university.getUsers();
-    List<Lesson> lessons1 = department1.getLessons();
-    List<Lesson> lessons2 = department2.getLessons();
-    List<Department> departments = university.getDepartments();
+      List<User> users = university.getUsers();
+      List<Lesson> lessons1 = department1.getLessons();
+      List<Lesson> lessons2 = department2.getLessons();
+      List<Department> departments = university.getDepartments();
 
-    lessons1.add(new Lesson(1101, "Lesson11", 1, 2, 4, 6, "Y"));
-    lessons1.add(new Lesson(1102, "Lesson12", 1, 0, 6, 6, "Y"));
-    lessons1.add(new Lesson(1103, "Lesson13", 1, 2, 4, 6, "Y"));
-    lessons1.add(new Lesson(1104, "Lesson14", 1, 0, 6, 6, "Y"));
-    lessons1.add(new Lesson(1501, "Lesson15", 5, 2, 4, 6, "Y"));
-    lessons1.add(new Lesson(1601, "Lesson16", 6, 0, 6, 6, "E"));
-    lessons1.add(new Lesson(1701, "Lesson17", 7, 2, 4, 6, "YE"));
-    lessons1.add(new Lesson(1801, "Lesson18", 8, 0, 6, 6, "E"));
-    lessons1.add(new Lesson(1901, "Lesson19", 9, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson(1101, "Lesson11", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson(1102, "Lesson12", 1, 0, 6, 6, "Y"));
+      lessons1.add(new Lesson(1103, "Lesson13", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson(1104, "Lesson14", 1, 0, 6, 6, "Y"));
+      lessons1.add(new Lesson(1501, "Lesson15", 5, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson(1601, "Lesson16", 6, 0, 6, 6, "E"));
+      lessons1.add(new Lesson(1701, "Lesson17", 7, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson(1801, "Lesson18", 8, 0, 6, 6, "E"));
+      lessons1.add(new Lesson(1901, "Lesson19", 9, 2, 4, 6, "YE"));
 
-    lessons2.add(new Lesson(1101, "Lesson21", 1, 0, 6, 6, "E"));
-    lessons2.add(new Lesson(1102, "Lesson22", 1, 2, 4, 6, "Y"));
-    lessons2.add(new Lesson(1201, "Lesson23", 2, 0, 6, 6, "E"));
-    lessons2.add(new Lesson(1202, "Lesson24", 2, 2, 4, 6, "Y"));
-    lessons2.add(new Lesson(1301, "Lesson25", 3, 0, 6, 6, "E"));
-    lessons2.add(new Lesson(1302, "Lesson26", 3, 2, 4, 6, "Y"));
-    lessons2.add(new Lesson(1401, "Lesson27", 4, 0, 6, 6, "E"));
-    lessons2.add(new Lesson(1501, "Lesson28", 5, 2, 4, 6, "Y"));
-    lessons2.add(new Lesson(1601, "Lesson29", 6, 0, 6, 6, "YE"));
+      lessons2.add(new Lesson(1101, "Lesson21", 1, 0, 6, 6, "E"));
+      lessons2.add(new Lesson(1102, "Lesson22", 1, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson(1201, "Lesson23", 2, 0, 6, 6, "E"));
+      lessons2.add(new Lesson(1202, "Lesson24", 2, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson(1301, "Lesson25", 3, 0, 6, 6, "E"));
+      lessons2.add(new Lesson(1302, "Lesson26", 3, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson(1401, "Lesson27", 4, 0, 6, 6, "E"));
+      lessons2.add(new Lesson(1501, "Lesson28", 5, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson(1601, "Lesson29", 6, 0, 6, 6, "YE"));
 
-    Student student1 = new Student("test1", "1", "lname fname", "email1@ihu.gr",
-        1, department1, 1);
-    Student student2 = new Student("test2", "2", "lname2 fname2", "email2@ihu.gr",
-        2, department1, 7);
-    Student student3 = new Student("test3", "3", "lname3 fname3", "email3@ihu.gr",
-        3, department2, 2);
-    Student student4 = new Student("test4", "4", "lname4 fname4", "email4@ihu.gr",
-        4, department2, 4);
+      Student student1 = new Student("test1", "1", "lname fname", "email1@ihu.gr",
+          1, department1, 1);
+      Student student2 = new Student("test2", "2", "lname2 fname2", "email2@ihu.gr",
+          2, department1, 7);
+      Student student3 = new Student("test3", "3", "lname3 fname3", "email3@ihu.gr",
+          3, department2, 2);
+      Student student4 = new Student("test4", "4", "lname4 fname4", "email4@ihu.gr",
+          4, department2, 4);
 
-    Administrator administrator = new Administrator("admin", "11",
-        "Admin Admin", "admin@ihu.gr", 1);
+      Administrator administrator = new Administrator("admin", "11",
+          "Admin Admin", "admin@ihu.gr", 1);
 
-    users.add(student1);
-    users.add(student2);
-    users.add(student3);
-    users.add(student4);
-    users.add(administrator);
+      users.add(student1);
+      users.add(student2);
+      users.add(student3);
+      users.add(student4);
+      users.add(administrator);
 
-    departments.add(department1);
-    departments.add(department2);
+      departments.add(department1);
+      departments.add(department2);
 
-    university.setDepartments(departments);
-    university.setUsers(users);
+      university.setDepartments(departments);
+      university.setUsers(users);
 
-    String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
-    try {
-      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
-      os.writeObject(university);
-      os.close();
-    } catch (IOException e) {
-      System.out.println(e.getMessage());
+      String path = GlobalConstants.UNIVERSITIES_PATH + "IHU.uni";
+      try {
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
+        os.writeObject(university);
+        os.close();
+      } catch (IOException e) {
+        System.out.println(e.getMessage());
+      }
+
+      try {
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
+
+        University.setUniversityInstance((University) is.readObject());
+        is.close();
+      } catch (IOException | ClassNotFoundException e) {
+        System.out.println(e.getMessage());
+      }
+    } else if (selectedUniversity.equals("AUTH")) {
+      University university = new University("Aristotle University of Thessaloniki", "AUTH",
+          "AUTh campus", "mail@auth.gr", "https://auth.gr",
+          "2310654321",
+          "Aristotle University of Thessaloniki is the largest greek university. It consist of 10 schools and 40 departments");
+
+      Department department1 = new Department("Department1", "2310747474");
+      List<User> users = university.getUsers();
+      List<Lesson> lessons1 = department1.getLessons();
+      List<Department> departments = university.getDepartments();
+
+      lessons1.add(new Lesson(1101, "Lesson11", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson(1102, "Lesson12", 1, 0, 6, 6, "Y"));
+      lessons1.add(new Lesson(1103, "Lesson13", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson(1601, "Lesson16", 6, 0, 6, 6, "E"));
+      lessons1.add(new Lesson(1701, "Lesson17", 7, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson(1801, "Lesson18", 8, 0, 6, 6, "E"));
+      lessons1.add(new Lesson(1901, "Lesson19", 9, 2, 4, 6, "YE"));
+
+      Student student1 = new Student("test1", "1", "lname fname", "email1@auth.gr",
+          1, department1, 1);
+      Administrator administrator = new Administrator("admin", "11",
+          "Admin Admin", "admin@ihu.gr", 1);
+      users.add(student1);
+      users.add(administrator);
+      departments.add(department1);
+
+      university.setDepartments(departments);
+      university.setUsers(users);
+
+      String path = GlobalConstants.UNIVERSITIES_PATH + "AUTH.uni";
+
+      try {
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
+        os.writeObject(university);
+        os.close();
+      } catch (IOException e) {
+        System.out.println(e.getMessage());
+      }
+
+      try {
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
+
+        University.setUniversityInstance((University) is.readObject());
+        is.close();
+      } catch (IOException | ClassNotFoundException e) {
+        System.out.println(e.getMessage());
+      }
     }
+    else {
+      create();
+    }
+  }
 
-    try {
-      ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
+  private void createUIComponents() {
+    UniversitiesDropDown = new JComboBox<>();
+    if (readUniversities().isEmpty()){
+      create();
+    }
+    List<University> universities = readUniversities();
 
-      University.setUniversityInstance((University) is.readObject());
-      is.close();
+    for (University university : universities) {
+      UniversitiesDropDown.addItem(university.getAcronym());
+      if (University.getUniversityInstance().getAcronym().equals(university.getAcronym())) {
+        UniversitiesDropDown.setSelectedIndex(universities.indexOf(university));
+      }
+    }
+  }
+
+  private List<University> readUniversities() {
+    Path path = Paths.get(GlobalConstants.UNIVERSITIES_PATH);
+    List<University> universities = new ArrayList<>();
+
+    try (Stream<Path> subPaths = Files.walk(path, 1)) {
+      List<String> subPathList = subPaths.filter(Files::isRegularFile)
+          .map(Objects::toString)
+          .collect(Collectors.toList());
+
+      for (String p : subPathList) {
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(p));
+        University uni = (University) is.readObject();
+        universities.add(uni);
+      }
     } catch (IOException | ClassNotFoundException e) {
       System.out.println(e.getMessage());
     }
+    return universities;
+  }
+
+  private void updatePage() {
+    Details.setText(University.getUniversityInstance().getDetails());
+    Title.setText(University.getUniversityInstance().getName());
+    Icon icon = new ImageIcon(
+        GlobalConstants.APP_ROOT + "\\src\\resources\\" + University.getUniversityInstance()
+            .getAcronym().toLowerCase() + ".png");
+    Logo.setIcon(icon);
+  }
+
+  private void create() {
+    create("AUTH");
+    create("IHU");
   }
 }
