@@ -9,7 +9,6 @@ public class Student extends User implements Serializable {
   private int studentCode;
   private Department department;
   private int semester;
-  private List<RegisteredLesson> passedLessons = new ArrayList<RegisteredLesson>();
   private List<Registration> registrations = new ArrayList<Registration>();
 
   private static Student studentInstance = null;
@@ -63,14 +62,6 @@ public class Student extends User implements Serializable {
 
   public void setSemester(int semester) {
     this.semester = semester;
-  }
-
-  public List<RegisteredLesson> getPassedLessons() {
-    return passedLessons;
-  }
-
-  public void setPassedLessons(List<RegisteredLesson> passedLessons) {
-    this.passedLessons = passedLessons;
   }
 
   public List<Registration> getRegistrations() {
