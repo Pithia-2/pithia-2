@@ -15,7 +15,7 @@ public class GlobalConstants {
   public static final String UNIVERSITIES_PATH = APP_ROOT + "\\Universities\\";
 
   public static void save() {
-    String path = UNIVERSITIES_PATH + "test.uni";
+    String path = UNIVERSITIES_PATH + University.getUniversityInstance().getAcronym() + ".uni";
     try {
       ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path));
       os.writeObject(University.getUniversityInstance());
