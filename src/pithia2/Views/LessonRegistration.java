@@ -22,7 +22,7 @@ public class LessonRegistration extends JFrame {
   private JTable RegistrationTable;
   private JPanel LessonRegistrationPanel;
   private JPanel RegistrationTablePanel;
-  private JScrollPane Registrations;
+  private JScrollPane Registration;
   private JPanel MiscPanel;
   private JLabel CreditLabel;
   private JButton NewRegistrationButton;

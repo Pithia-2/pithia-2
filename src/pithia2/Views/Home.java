@@ -31,6 +31,8 @@ import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Department;
 import pithia2.Models.Lesson;
+import pithia2.Models.RegisteredLesson;
+import pithia2.Models.Registration;
 import pithia2.Models.Student;
 import pithia2.Models.University;
 import pithia2.Models.User;
@@ -247,6 +249,7 @@ public class Home extends JFrame {
     if (readUniversities().isEmpty()){
       create();
     }
+    
     List<University> universities = readUniversities();
 
     for (University university : universities) {

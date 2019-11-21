@@ -1,14 +1,21 @@
 package pithia2.Views;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultRowSorter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
+import pithia2.Models.RegisteredLesson;
+import pithia2.Models.Registration;
 import pithia2.Models.Student;
 
 public class StudentGrades extends JFrame {
@@ -50,6 +57,8 @@ public class StudentGrades extends JFrame {
       dispose();
       Student.getStudentInstance().logout();
     });
+
+    loadGrades();
   }
 
   private void createUIComponents() {
@@ -57,5 +66,44 @@ public class StudentGrades extends JFrame {
     DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
     GradesTable = new JTable(tableModel);
     GradesTable.setDefaultEditor(Object.class, null);
+  }
+
+  private void loadGrades() {
+    Registration lastRegistration = Student.getStudentInstance().getLastRegistration();
+    int credit = 0, rowCount = 0;
+    double grade = 0;
+
+    if (lastRegistration != null) {
+      List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
+
+      for (RegisteredLesson registeredLesson : registeredLessons) {
+        credit += registeredLesson.getCredit();
+        grade += registeredLesson.getGrade();
+        rowCount++;
+
+        Object[] row = new Object[6];
+        row[0] = registeredLesson.getId();
+        row[1] = registeredLesson.getName();
+        row[2] = registeredLesson.getSemester();
+        row[3] = registeredLesson.getCredit();
+        row[4] = registeredLesson.getType();
+        row[5] = registeredLesson.getGrade();
+
+        ((DefaultTableModel) GradesTable.getModel()).addRow(row);
+      }
+    }
+
+    CreditLabel.setText("ΔΜ: " + credit);
+    if (rowCount > 0) {
+      GradeLabel.setText("ΜΟ: " + (grade / rowCount));
+    } else {
+      GradeLabel.setText("ΜΟ: Not yet determined.");
+    }
+
+    DefaultRowSorter sorter = ((DefaultRowSorter) GradesTable.getRowSorter());
+    ArrayList list = new ArrayList();
+    list.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
+    sorter.setSortKeys(list);
+    sorter.sort();
   }
 }
