@@ -73,6 +73,10 @@ public class Student extends User implements Serializable {
   }
 
   public Registration getLastRegistration() {
+    if (registrations.size() == 0) {
+      return null;
+    }
+
     int lastRegistration = registrations.size() - 1;
 
     return registrations.get(lastRegistration);

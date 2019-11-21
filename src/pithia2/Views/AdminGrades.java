@@ -116,11 +116,9 @@ public class AdminGrades extends JFrame {
     for (User user : users) {
       if (user instanceof Student && ((Student) user).getStudentCode() == studentCode) {
         selectedStudent = (Student) user;
-        int registrationCount = selectedStudent.getRegistrations().size();
+        lastRegistration = selectedStudent.getLastRegistration();
 
-        if (registrationCount > 0) {
-          int lastRegistrationIndex = registrationCount - 1;
-          lastRegistration = selectedStudent.getRegistrations().get(lastRegistrationIndex);
+        if (lastRegistration != null) {
           List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
 
           for (RegisteredLesson registeredLesson : registeredLessons) {
@@ -158,5 +156,7 @@ public class AdminGrades extends JFrame {
         index++;
       }
     }
+
+    loadLessons();
   }
 }
