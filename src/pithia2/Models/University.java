@@ -7,6 +7,7 @@ import java.util.List;
 public class University implements Serializable {
 
   private String name;
+  private String acronym;
   private String address;
   private String email;
   private String website;
@@ -17,9 +18,11 @@ public class University implements Serializable {
 
   private static University universityInstance = null;
 
-  public University(String name, String address, String email, String website, String phoneNumber,
+  public University(String name, String acronym, String address, String email,
+      String website, String phoneNumber,
       String details) {
     this.name = name;
+    this.acronym = acronym;
     this.address = address;
     this.email = email;
     this.website = website;
@@ -100,5 +103,13 @@ public class University implements Serializable {
 
   public void setDetails(String details) {
     this.details = details;
+  }
+
+  public String getAcronym() {
+    return acronym;
+  }
+
+  public void setAcronym(String acronym) {
+    this.acronym = acronym;
   }
 }
