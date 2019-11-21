@@ -1,5 +1,6 @@
 package pithia2.Controllers;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,8 +17,12 @@ public class Main {
       throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-    String path = GlobalConstants.UNIVERSITIES_PATH + "test.uni";
+    if (!new File(GlobalConstants.UNIVERSITIES_PATH).exists()){
+      File file = new File(GlobalConstants.UNIVERSITIES_PATH);
+      boolean bool = file.mkdir();
+    }
 
+    String path = GlobalConstants.UNIVERSITIES_PATH + "IHU.uni";
     try {
       ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
 
