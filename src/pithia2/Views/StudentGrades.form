@@ -79,7 +79,6 @@
                   <background color="-986896"/>
                   <font name="Segoe UI" size="13"/>
                   <gridColor color="-986896"/>
-                  <intercellSpacing width="8" height="0"/>
                   <rowHeight value="20"/>
                 </properties>
               </component>
