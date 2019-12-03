@@ -92,10 +92,12 @@ public class Student extends User implements Serializable {
   }
 
   public void fillPassedLessons() {
+    passedLessons.clear();
+
     for (Registration registration : registrations) {
       for (RegisteredLesson registeredLesson : registration.getRegisteredLessons()) {
         if (registeredLesson.getGrade() >= 5) {
-          this.passedLessons.add((Lesson) registeredLesson);
+          passedLessons.add((Lesson) registeredLesson);
         }
       }
     }
