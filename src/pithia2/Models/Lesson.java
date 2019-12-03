@@ -1,6 +1,8 @@
 package pithia2.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Lesson implements Serializable {
 
@@ -11,6 +13,7 @@ public class Lesson implements Serializable {
   private int theoryHours;
   private int credit;
   private String type;
+  private List<Lesson> requiredLessons = new ArrayList<Lesson>();
 
   public Lesson(int id, String name, int semester, int labHours, int theoryHours, int credit,
       String type) {
@@ -80,5 +83,13 @@ public class Lesson implements Serializable {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public List<Lesson> getRequiredLessons() {
+    return requiredLessons;
+  }
+
+  public void setRequiredLessons(List<Lesson> requiredLessons) {
+    this.requiredLessons = requiredLessons;
   }
 }
