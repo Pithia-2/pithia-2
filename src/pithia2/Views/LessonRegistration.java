@@ -59,9 +59,9 @@ public class LessonRegistration extends JFrame {
       dispose();
     });
 
-    if (RegistrationTable.getRowCount() > 0){
+    if (RegistrationTable.getRowCount() > 0) {
       CreditLabel.setText("Credits: " + calculateCredit() + "/42");
-    }else {
+    } else {
       CreditLabel.setText("Credits: 0/42");
     }
   }
@@ -72,7 +72,12 @@ public class LessonRegistration extends JFrame {
     RegistrationTable = new JTable(tableModel);
     RegistrationTable.setDefaultEditor(Object.class, null);
 
-    if (!Student.getStudentInstance().getRegistrations().isEmpty()) {
+    boolean studentHasNoRegistrationForCurrentSemester =
+        Student.getStudentInstance().getSemester() > Student.getStudentInstance().getRegistrations().size();
+
+    if (studentHasNoRegistrationForCurrentSemester) {
+      NewRegistrationButton = new JButton("New Registration");
+    } else {
       int lastRegistrationIndex = Student.getStudentInstance().getRegistrations().size() - 1;
       List<RegisteredLesson> registeredLessons = Student.getStudentInstance().getRegistrations()
           .get(lastRegistrationIndex).getRegisteredLessons();
@@ -89,8 +94,6 @@ public class LessonRegistration extends JFrame {
       }
       NewRegistrationButton = new JButton("New Registration");
       NewRegistrationButton.setEnabled(false);
-    } else {
-      NewRegistrationButton = new JButton("New Registration");
     }
   }
 
