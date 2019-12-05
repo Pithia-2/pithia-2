@@ -20,6 +20,9 @@ public class Student extends User implements Serializable {
     this.studentCode = studentCode;
     this.department = department;
     this.semester = semester;
+    for (int i = 0; i < semester - 1; i++){
+      this.registrations.add(new Registration(i));
+    }
   }
 
   public Student() {
