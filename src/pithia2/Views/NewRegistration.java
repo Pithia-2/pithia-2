@@ -147,19 +147,24 @@ public class NewRegistration extends JFrame {
 
   private List<Lesson> availableLessons() {
     List<Lesson> lessonList = Student.getStudentInstance().getDepartment().getLessons();
-    List<Lesson> lessons = new ArrayList<Lesson>();
+    List<Lesson> availableLessons = new ArrayList<Lesson>();
+    List<Lesson> passedLessons = Student.getStudentInstance().getPassedLessons();
     for (Lesson lesson : lessonList) {
       if (Student.getStudentInstance().getSemester() % 2 == 0) {
         if (lesson.getSemester() % 2 == 0) {
-          lessons.add(lesson);
+          if (passedLessons.containsAll(lesson.getRequiredLessons())){
+            availableLessons.add(lesson);
+          }
         }
       } else {
         if (lesson.getSemester() % 2 != 0) {
-          lessons.add(lesson);
+          if (passedLessons.containsAll(lesson.getRequiredLessons())){
+            availableLessons.add(lesson);
+          }
         }
       }
     }
-    return lessons;
+    return availableLessons;
   }
 
   private void register(List<Lesson> chosenLessons) {
