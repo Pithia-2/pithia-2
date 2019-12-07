@@ -12,12 +12,7 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import pithia2.GlobalConstants;
-import pithia2.Models.Administrator;
-import pithia2.Models.RegisteredLesson;
-import pithia2.Models.Registration;
-import pithia2.Models.Student;
-import pithia2.Models.University;
-import pithia2.Models.User;
+import pithia2.Models.*;
 
 public class AdminGrades extends JFrame {
 
@@ -155,6 +150,8 @@ public class AdminGrades extends JFrame {
 
         index++;
       }
+
+      selectedStudent.fillPassedLessons();
     }
 
     loadLessons();

@@ -10,6 +10,7 @@ public class Student extends User implements Serializable {
   private Department department;
   private int semester;
   private List<Registration> registrations = new ArrayList<Registration>();
+  private List<Lesson> passedLessons = new ArrayList<Lesson>();
 
   private static Student studentInstance = null;
 
@@ -83,5 +84,27 @@ public class Student extends User implements Serializable {
     int lastRegistration = registrations.size() - 1;
 
     return registrations.get(lastRegistration);
+  }
+
+  public List<Lesson> getPassedLessons() {
+    return passedLessons;
+  }
+
+  public void setPassedLessons(List<Lesson> passedLessons) {
+    this.passedLessons = passedLessons;
+  }
+
+  public void fillPassedLessons() {
+    passedLessons.clear();
+
+    for (Registration registration : registrations) {
+      for (RegisteredLesson registeredLesson : registration.getRegisteredLessons()) {
+        if (registeredLesson.getGrade() >= 5) {
+          if (!passedLessons.contains(registeredLesson)){
+            passedLessons.add(registeredLesson);
+          }
+        }
+      }
+    }
   }
 }
