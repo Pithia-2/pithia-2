@@ -151,11 +151,11 @@ public class NewRegistration extends JFrame {
     List<Lesson> passedLessons = Student.getStudentInstance().getPassedLessons();
     for (Lesson lesson : lessonList) {
       if (Student.getStudentInstance().getSemester() % 2 == 0) {
-        if (lesson.getSemester() % 2 == 0 && passedLessons.containsAll(lesson.getRequiredLessons())) {
+        if (lesson.getSemester() % 2 == 0 && passedLessons.containsAll(lesson.getRequiredLessons()) && !passedLessons.contains(lesson)) {
             availableLessons.add(lesson);
         }
       } else {
-        if (lesson.getSemester() % 2 != 0 && passedLessons.containsAll(lesson.getRequiredLessons())) {
+        if (lesson.getSemester() % 2 != 0 && passedLessons.containsAll(lesson.getRequiredLessons()) && !passedLessons.contains(lesson)) {
             availableLessons.add(lesson);
         }
       }

@@ -172,6 +172,7 @@ public class Home extends JFrame {
           "Admin Admin", "admin@ihu.gr", 1);
 
       student1.getPassedLessons().add(temp1);
+      student1.getPassedLessons().add(temp2);
 
       Registration registration21 = new Registration(0);
       Registration registration22 = new Registration(1);
