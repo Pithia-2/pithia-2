@@ -99,10 +99,8 @@ public class Student extends User implements Serializable {
 
     for (Registration registration : registrations) {
       for (RegisteredLesson registeredLesson : registration.getRegisteredLessons()) {
-        if (registeredLesson.getGrade() >= 5) {
-          if (!passedLessons.contains(registeredLesson)){
+        if (registeredLesson.getGrade() >= 5 && !passedLessons.contains(registeredLesson)) {
             passedLessons.add(registeredLesson);
-          }
         }
       }
     }
