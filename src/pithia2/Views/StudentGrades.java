@@ -77,7 +77,9 @@ public class StudentGrades extends JFrame {
       List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
 
       for (RegisteredLesson registeredLesson : registeredLessons) {
-        credit += registeredLesson.getCredit();
+        if (registeredLesson.getGrade() >= 5) {
+          credit += registeredLesson.getCredit();
+        }
         grade += registeredLesson.getGrade();
         rowCount++;
 
