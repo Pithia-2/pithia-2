@@ -96,10 +96,11 @@ public class StudentGrades extends JFrame {
     }
 
     CreditLabel.setText("ΔΜ: " + credit);
-    if (rowCount > 0) {
-      GradeLabel.setText("ΜΟ: " + (grade / rowCount));
+    if (rowCount > 0 && grade > 0) {
+      double avg = grade / rowCount;
+      GradeLabel.setText("ΜΟ: " + (Math.round(avg * 100.0) / 100.0));
     } else {
-      GradeLabel.setText("ΜΟ: Not yet determined.");
+      GradeLabel.setText("ΜΟ: Not yet determined");
     }
 
     DefaultRowSorter sorter = ((DefaultRowSorter) GradesTable.getRowSorter());
