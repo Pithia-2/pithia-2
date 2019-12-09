@@ -152,6 +152,7 @@ public class AdminGrades extends JFrame {
       }
 
       selectedStudent.fillPassedLessons();
+      GlobalConstants.save();
     }
 
     loadLessons();
