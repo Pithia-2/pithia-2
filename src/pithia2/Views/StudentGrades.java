@@ -79,14 +79,18 @@ public class StudentGrades extends JFrame {
     boolean studentHasRegistrations = !Student.getStudentInstance().getRegistrations().isEmpty();
 
     if (studentHasRegistrations) {
-      List<RegisteredLesson> registeredLessons = new ArrayList<RegisteredLesson>();
-      Map<String, RegisteredLesson> register = new LinkedHashMap<String, RegisteredLesson>();
+      List<Registration> registrations = Student.getStudentInstance().getRegistrations();
+      Map<String, RegisteredLesson> registeredLessons = new LinkedHashMap<String, RegisteredLesson>();
 
-      for (int i = Student.getStudentInstance().getRegistrations().size() - 1; i > -1; i--) {
-        registeredLessons.addAll(Student.getStudentInstance().getRegistrations().get(i).getRegisteredLessons());
+      for (int i = 0; registrations.size() - 1 >= i; i++) {
+        List<RegisteredLesson> semesterRegisteredLessons = registrations.get(i).getRegisteredLessons();
+        for (RegisteredLesson semesterRegisteredLesson : semesterRegisteredLessons) {
+          registeredLessons.put(semesterRegisteredLesson.getName(), semesterRegisteredLesson);
+        }
       }
 
-      for (RegisteredLesson registeredLesson : registeredLessons) {
+      for (Map.Entry<String, RegisteredLesson> entry : registeredLessons.entrySet()) {
+        RegisteredLesson registeredLesson = entry.getValue();
         if (registeredLesson.getGrade() >= 5) {
           credit += registeredLesson.getCredit();
         }

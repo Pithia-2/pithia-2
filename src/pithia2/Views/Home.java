@@ -183,6 +183,7 @@ public class Home extends JFrame {
       Registration registration41 = new Registration(0);
 
       registeredLessons25.add(new RegisteredLesson(lessons1.get(2)));
+      registeredLessons25.add(new RegisteredLesson(lessons1.get(5)));
       registration25.setRegisteredLessons(registeredLessons25);
 
       student1.getRegistrations().clear();
