@@ -177,8 +177,8 @@ public class Home extends JFrame {
       Registration registration21 = new Registration(0);
       Registration registration22 = new Registration(1);
       Registration registration23 = new Registration(2);
-      Registration registration24 = new Registration(3);
-      Registration registration25 = new Registration(4);
+      Registration registration24 = new Registration(4);
+      Registration registration25 = new Registration(3);
       Registration registration31 = new Registration(0);
       Registration registration41 = new Registration(0);
 
@@ -192,8 +192,9 @@ public class Home extends JFrame {
       student2.getRegistrations().add(registration21);
       student2.getRegistrations().add(registration22);
       student2.getRegistrations().add(registration23);
-      student2.getRegistrations().add(registration24);
       student2.getRegistrations().add(registration25);
+      student2.getRegistrations().add(registration24);
+
       student3.getRegistrations().add(registration31);
       student4.getRegistrations().add(registration41);
 
