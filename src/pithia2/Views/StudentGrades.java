@@ -1,7 +1,12 @@
 package pithia2.Views;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.DefaultRowSorter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -69,12 +74,17 @@ public class StudentGrades extends JFrame {
   }
 
   private void loadGrades() {
-    Registration lastRegistration = Student.getStudentInstance().getLastRegistration();
     int credit = 0, rowCount = 0;
     double grade = 0;
+    boolean studentHasRegistrations = !Student.getStudentInstance().getRegistrations().isEmpty();
 
-    if (lastRegistration != null) {
-      List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
+    if (studentHasRegistrations) {
+      List<RegisteredLesson> registeredLessons = new ArrayList<RegisteredLesson>();
+      Map<String, RegisteredLesson> register = new LinkedHashMap<String, RegisteredLesson>();
+
+      for (int i = Student.getStudentInstance().getRegistrations().size() - 1; i > -1; i--) {
+        registeredLessons.addAll(Student.getStudentInstance().getRegistrations().get(i).getRegisteredLessons());
+      }
 
       for (RegisteredLesson registeredLesson : registeredLessons) {
         if (registeredLesson.getGrade() >= 5) {
