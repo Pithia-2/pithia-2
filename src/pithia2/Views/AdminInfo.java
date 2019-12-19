@@ -34,6 +34,7 @@ public class AdminInfo extends JFrame {
   private JPanel NamePanel;
   private JPanel EmailPanel;
   private JPanel CodePanel;
+  private JButton LessonManagementButton;
 
   AdminInfo() {
     add(RootPanel);
@@ -57,6 +58,12 @@ public class AdminInfo extends JFrame {
     UserManagementButton.addActionListener(e -> {
       UserManagement userManagement = new UserManagement();
       userManagement.setVisible(true);
+      dispose();
+    });
+
+    LessonManagementButton.addActionListener(e -> {
+      LessonManagement lessonManagement = new LessonManagement();
+      lessonManagement.setVisible(true);
       dispose();
     });
 
