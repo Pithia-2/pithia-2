@@ -26,7 +26,7 @@ public class Lesson implements Serializable {
     this.type = type;
   }
 
-  Lesson() {
+  public Lesson() {
   }
 
   public int getId() {
