@@ -53,6 +53,7 @@ public class Home extends JFrame {
   private JPanel AppNamePanel;
   private JPanel LogoPanel;
   private JComboBox<String> UniversitiesDropDown;
+  private JPanel TitlePanel;
 
   public Home() {
     add(MainPanel);
@@ -112,6 +113,22 @@ public class Home extends JFrame {
         Administrator.setAdminInstance(null);
       }
     });
+  }
+
+  private void createUIComponents() {
+    UniversitiesDropDown = new JComboBox<>();
+    if (readUniversities().isEmpty()){
+      create();
+    }
+
+    List<University> universities = readUniversities();
+
+    for (University university : universities) {
+      UniversitiesDropDown.addItem(university.getAcronym());
+      if (University.getUniversityInstance().getAcronym().equals(university.getAcronym())) {
+        UniversitiesDropDown.setSelectedIndex(universities.indexOf(university));
+      }
+    }
   }
 
   private void create(String selectedUniversity) {
@@ -279,22 +296,6 @@ public class Home extends JFrame {
     }
     else {
       create();
-    }
-  }
-
-  private void createUIComponents() {
-    UniversitiesDropDown = new JComboBox<>();
-    if (readUniversities().isEmpty()){
-      create();
-    }
-    
-    List<University> universities = readUniversities();
-
-    for (University university : universities) {
-      UniversitiesDropDown.addItem(university.getAcronym());
-      if (University.getUniversityInstance().getAcronym().equals(university.getAcronym())) {
-        UniversitiesDropDown.setSelectedIndex(universities.indexOf(university));
-      }
     }
   }
 
