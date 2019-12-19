@@ -145,7 +145,7 @@ public class NewRegistration extends JFrame {
     return credit;
   }
 
-  private List<Lesson> availableLessons() {
+  public static List<Lesson> availableLessons() {
     List<Lesson> lessonList = Student.getStudentInstance().getDepartment().getLessons();
     List<Lesson> availableLessons = new ArrayList<Lesson>();
     List<Lesson> passedLessons = Student.getStudentInstance().getPassedLessons();
