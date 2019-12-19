@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pithia2.Views.LessonManagement">
+  <grid id="27dc6" binding="RootPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="1107" height="765"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="e1c5a" binding="Navbar" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="50"/>
+            <preferred-size width="372" height="34"/>
+            <maximum-size width="-1" height="50"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="30a9f" class="javax.swing.JButton" binding="BackButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Back"/>
+            </properties>
+          </component>
+          <component id="97868" class="javax.swing.JButton" binding="SignoutButton">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Sign Out"/>
+            </properties>
+          </component>
+          <component id="2c5ea" class="javax.swing.JButton" binding="HomeButton">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Home"/>
+            </properties>
+          </component>
+          <component id="f830f" class="javax.swing.JComboBox" binding="DepartmentsDropdown" custom-create="true">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="150" height="-1"/>
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="520f3" binding="LessonsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="50" bottom="0" right="50"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="4023f" binding="Lessons">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Lessons" noi18n="true" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+            </border>
+            <children>
+              <component id="c36c9" class="javax.swing.JTable" binding="LessonsTable" custom-create="true">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                  <background color="-986896"/>
+                  <enabled value="true"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <rowHeight value="20"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="8fed9" binding="MiscPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="100"/>
+            <preferred-size width="-1" height="100"/>
+            <maximum-size width="-1" height="100"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="b19dc" class="javax.swing.JButton" binding="SaveButton">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Save"/>
+            </properties>
+          </component>
+          <component id="910f4" class="javax.swing.JButton" binding="NewButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value=" New Lesson"/>
+            </properties>
+          </component>
+          <component id="277b4" class="javax.swing.JButton" binding="DeleteButton">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Segoe UI Light" size="16"/>
+              <text value="Delete Lesson"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="5b8e9" binding="PrerequisitesPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="50" bottom="0" right="50"/>
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="f17a7" binding="Prerequisites">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Prerequisites" noi18n="true" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+              <title-color color="-5194043"/>
+            </border>
+            <children>
+              <component id="c0ed" class="javax.swing.JTable" binding="PrerequisitesTable" custom-create="true">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                  <background color="-986896"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <rowHeight value="20"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <scrollpane id="23088" binding="AvailablePrerequisites">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none" title="Available Prerequisites" noi18n="true" title-justification="2">
+              <font name="Segoe UI Light" size="20"/>
+            </border>
+            <children>
+              <component id="55577" class="javax.swing.JTable" binding="AvailablePrerequisitesTable" custom-create="true">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                  <background color="-986896"/>
+                  <font name="Segoe UI" size="13"/>
+                  <gridColor color="-986896"/>
+                  <rowHeight value="20"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
