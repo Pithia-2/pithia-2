@@ -10,8 +10,6 @@ public class User implements Serializable {
   private String fullname;
   private String email;
 
-  private static User userInstance = null;
-
   User(String username, String password, String fullname, String email) {
     this.username = username;
     this.password = password;
@@ -20,14 +18,6 @@ public class User implements Serializable {
   }
 
   User() {
-  }
-
-  public void login() {
-    userInstance = this;
-  }
-
-  public void logout() {
-    userInstance = null;
   }
 
   public String getUsername() {
