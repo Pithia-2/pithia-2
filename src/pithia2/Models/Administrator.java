@@ -29,10 +29,6 @@ public class Administrator extends User implements Serializable {
     return adminCode;
   }
 
-  public void setAdminCode(int adminCode) {
-    this.adminCode = adminCode;
-  }
-
   public static Administrator getAdminInstance() {
     return adminInstance;
   }

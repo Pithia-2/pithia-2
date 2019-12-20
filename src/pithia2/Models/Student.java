@@ -48,10 +48,6 @@ public class Student extends User implements Serializable {
     return studentCode;
   }
 
-  public void setStudentCode(int studentCode) {
-    this.studentCode = studentCode;
-  }
-
   public Department getDepartment() {
     return department;
   }
@@ -72,10 +68,6 @@ public class Student extends User implements Serializable {
     return registrations;
   }
 
-  public void setRegistrations(List<Registration> registrations) {
-    this.registrations = registrations;
-  }
-
   public Registration getLastRegistration() {
     if (registrations.size() == 0) {
       return null;
@@ -88,10 +80,6 @@ public class Student extends User implements Serializable {
 
   public List<Lesson> getPassedLessons() {
     return passedLessons;
-  }
-
-  public void setPassedLessons(List<Lesson> passedLessons) {
-    this.passedLessons = passedLessons;
   }
 
   public void fillPassedLessons() {
