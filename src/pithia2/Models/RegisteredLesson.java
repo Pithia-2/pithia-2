@@ -6,12 +6,6 @@ public class RegisteredLesson extends Lesson implements Serializable {
 
   private double grade;
 
-  public RegisteredLesson(int id, String name, int semester, int labHours, int theoryHours,
-      int credit, String type, double grade) {
-    super(id, name, semester, labHours, theoryHours, credit, type);
-    this.grade = grade;
-  }
-
   public RegisteredLesson(Lesson lesson){
     super(lesson.getId(), lesson.getName(), lesson.getSemester(), lesson.getLabHours(),
         lesson.getTheoryHours(), lesson.getCredit(), lesson.getType());

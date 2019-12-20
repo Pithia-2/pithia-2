@@ -30,20 +30,8 @@ public class User implements Serializable {
     userInstance = null;
   }
 
-  public static User getUserInstance() {
-    return userInstance;
-  }
-
-  public static void setUserInstance(User userInstance) {
-    User.userInstance = userInstance;
-  }
-
   public String getUsername() {
     return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
   }
 
   public String getPassword() {
@@ -58,16 +46,8 @@ public class User implements Serializable {
     return fullname;
   }
 
-  public void setFullname(String fullname) {
-    this.fullname = fullname;
-  }
-
   public String getEmail() {
     return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
   }
 
   public static List<User> deleteUser(List<User> users, String username) {

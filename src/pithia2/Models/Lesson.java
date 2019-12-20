@@ -88,8 +88,4 @@ public class Lesson implements Serializable {
   public List<Lesson> getRequiredLessons() {
     return requiredLessons;
   }
-
-  public void setRequiredLessons(List<Lesson> requiredLessons) {
-    this.requiredLessons = requiredLessons;
-  }
 }

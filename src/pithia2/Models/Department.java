@@ -30,10 +30,6 @@ public class Department implements Serializable {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
   public List<Lesson> getLessons() {
     return lessons;
   }
