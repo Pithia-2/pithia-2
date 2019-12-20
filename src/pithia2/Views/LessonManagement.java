@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Department;
