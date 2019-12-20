@@ -122,6 +122,8 @@ public class UserManagement extends JFrame {
   }
 
   private void createStudent() {
+    save();
+
     int increment = University.getUniversityInstance().getUsers().size() + 1;
     Department department = University.getUniversityInstance().getDepartments().get(0);
     Student student = new Student("newStudent" + increment, "-", "-", "-", 0, department, 0);
@@ -133,6 +135,8 @@ public class UserManagement extends JFrame {
   }
 
   private void createAdministrator() {
+    save();
+
     int increment = University.getUniversityInstance().getUsers().size() + 1;
     Administrator admin = new Administrator("newAdmin" + increment, "-", "-", "-", 0);
     List<User> users = University.getUniversityInstance().getUsers();
