@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Department;
@@ -127,8 +128,7 @@ public class LessonManagement extends JFrame {
   }
 
   private void loadLessons() {
-    // Reset the table
-    ((DefaultTableModel) LessonTable.getModel()).setRowCount(0);
+    resetTable(LessonTable);
 
     List<Lesson> lessons = getSelectedDepartmentsLessons();
     Object[] rowData = new Object[7];
@@ -145,9 +145,8 @@ public class LessonManagement extends JFrame {
   }
 
   private void loadPrerequisites() {
-    // Reset the tables
-    ((DefaultTableModel) PrerequisiteTable.getModel()).setRowCount(0);
-    ((DefaultTableModel) AvailablePrerequisiteTable.getModel()).setRowCount(0);
+    resetTable(PrerequisiteTable);
+    resetTable(AvailablePrerequisiteTable);
 
     List<Lesson> requiredLessons = getSelectedLessonsPrerequisites();
     for (Lesson requiredLesson : requiredLessons) {
@@ -277,5 +276,9 @@ public class LessonManagement extends JFrame {
 
   private List<Lesson> getSelectedLessonsPrerequisites() {
     return selectedLesson.getRequiredLessons();
+  }
+
+  private void resetTable(JTable table) {
+    ((DefaultTableModel) table.getModel()).setRowCount(0);
   }
 }
