@@ -160,7 +160,6 @@
             <properties/>
             <border type="none" title="Prerequisites" noi18n="true" title-justification="2">
               <font name="Segoe UI Light" size="20"/>
-              <title-color color="-5194043"/>
             </border>
             <children>
               <component id="c0ed" class="javax.swing.JTable" binding="PrerequisiteTable" custom-create="true">
