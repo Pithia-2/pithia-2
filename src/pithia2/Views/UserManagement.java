@@ -106,7 +106,7 @@ public class UserManagement extends JFrame {
         row[5] = student.getDepartment().getName();
         row[6] = student.getSemester();
 
-        ((DefaultTableModel) StudentTable.getModel()).addRow(row);
+        studentTableModel.addRow(row);
       } else if (user instanceof Administrator) {
         Administrator admin = (Administrator) user;
         Object[] row = new Object[5];
@@ -116,7 +116,7 @@ public class UserManagement extends JFrame {
         row[3] = admin.getEmail();
         row[4] = admin.getAdminCode();
 
-        ((DefaultTableModel) AdministratorTable.getModel()).addRow(row);
+        adminTableModel.addRow(row);
       }
     }
   }
@@ -127,7 +127,6 @@ public class UserManagement extends JFrame {
     Student student = new Student("newStudent" + increment, "-", "-", "-", 0, department, 0);
     List<User> users = University.getUniversityInstance().getUsers();
     users.add(student);
-    University.getUniversityInstance().setUsers(users);
 
     GlobalConstants.save();
     loadTable();
@@ -138,7 +137,6 @@ public class UserManagement extends JFrame {
     Administrator admin = new Administrator("newAdmin" + increment, "-", "-", "-", 0);
     List<User> users = University.getUniversityInstance().getUsers();
     users.add(admin);
-    University.getUniversityInstance().setUsers(users);
 
     GlobalConstants.save();
     loadTable();
@@ -147,8 +145,7 @@ public class UserManagement extends JFrame {
   private void deleteStudent() {
     int row = StudentTable.getSelectedRow();
     String username = StudentTable.getValueAt(row, 0).toString();
-    List<User> users = User.deleteUser(University.getUniversityInstance().getUsers(), username);
-    University.getUniversityInstance().setUsers(users);
+    User.deleteUser(University.getUniversityInstance().getUsers(), username);
 
     GlobalConstants.save();
     loadTable();
@@ -157,15 +154,14 @@ public class UserManagement extends JFrame {
   private void deleteAdmin() {
     int row = AdministratorTable.getSelectedRow();
     String username = AdministratorTable.getValueAt(row, 0).toString();
-    List<User> users = User.deleteUser(University.getUniversityInstance().getUsers(), username);
-    University.getUniversityInstance().setUsers(users);
+    User.deleteUser(University.getUniversityInstance().getUsers(), username);
 
     GlobalConstants.save();
     loadTable();
   }
 
   private void save() {
-    List<User> users = new ArrayList<User>();
+    List<User> users = new ArrayList<>();
 
     for (int i = 0; i < StudentTable.getRowCount(); i++) {
       String username = StudentTable.getValueAt(i, 0).toString();
