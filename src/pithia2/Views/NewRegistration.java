@@ -103,9 +103,9 @@ public class NewRegistration extends JFrame {
     ConfirmButton.addActionListener(actionEvent -> {
       List<Lesson> lessons = new ArrayList<Lesson>();
       for (int i = 0; i < ChosenLessonTable.getRowCount(); i++) {
-        int id = Integer.parseInt(ChosenLessonTable.getValueAt(i, 0).toString());
+        String id = ChosenLessonTable.getValueAt(i, 0).toString();
         for (Lesson lesson : Student.getStudentInstance().getDepartment().getLessons()) {
-          if (id == lesson.getId()){
+          if (id.equals(lesson.getId())){
             lessons.add(lesson);
           }
         }

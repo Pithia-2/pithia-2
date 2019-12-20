@@ -144,34 +144,34 @@ public class Home extends JFrame {
       List<Department> departments = university.getDepartments();
       List<RegisteredLesson> registeredLessons25 = new ArrayList<RegisteredLesson>();
 
-      lessons1.add(new Lesson(1101, "Lesson11", 1, 2, 4, 6, "Y"));
-      lessons1.add(new Lesson(1102, "Lesson12", 1, 0, 6, 6, "Y"));
-      lessons1.add(new Lesson(1103, "Lesson13", 1, 2, 4, 6, "Y"));
-      lessons1.add(new Lesson(1104, "Lesson14", 1, 0, 6, 6, "Y"));
-      lessons1.add(new Lesson(1501, "Lesson15", 5, 2, 4, 6, "Y"));
-      lessons1.add(new Lesson(1601, "Lesson16", 6, 0, 6, 6, "E"));
-      lessons1.add(new Lesson(1701, "Lesson17", 7, 2, 4, 6, "YE"));
-      lessons1.add(new Lesson(1901, "Lesson18", 9, 0, 6, 6, "E"));
-      lessons1.add(new Lesson(1902, "Lesson19", 9, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson("1101", "Lesson1101", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson("1102", "Lesson1102", 1, 0, 6, 6, "Y"));
+      lessons1.add(new Lesson("1103", "Lesson1103", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson("1104", "Lesson14", 1, 0, 6, 6, "Y"));
+      lessons1.add(new Lesson("1501", "Lesson15", 5, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson("1601", "Lesson16", 6, 0, 6, 6, "E"));
+      lessons1.add(new Lesson("1701", "Lesson17", 7, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson("1901", "Lesson18", 9, 0, 6, 6, "E"));
+      lessons1.add(new Lesson("1902", "Lesson19", 9, 2, 4, 6, "YE"));
 
-      Lesson temp1 = new Lesson(1111, "temp1", 1, 4,4,2, "E");
-      Lesson temp2 = new Lesson(1112, "temp2", 1, 4,4,2, "E");
-      Lesson temp3 = new Lesson(1113, "temp3", 1, 4,4,2, "E");
-      temp3.getRequiredLessons().add(temp1);
-      temp3.getRequiredLessons().add(temp2);
-      lessons1.add(temp1);
-      lessons1.add(temp2);
-      lessons1.add(temp3);
+      Lesson lesson1 = new Lesson("1101", "temp1", 1, 4,4,2, "E");
+      Lesson lesson2 = new Lesson("1201", "temp2", 2, 4,4,2, "E");
+      Lesson lesson3 = new Lesson("1301", "temp3", 3, 4,4,2, "E");
+      lesson3.getRequiredLessons().add(lesson1);
+      lesson3.getRequiredLessons().add(lesson2);
+      lessons1.add(lesson1);
+      lessons1.add(lesson2);
+      lessons1.add(lesson3);
 
-      lessons2.add(new Lesson(1101, "Lesson21", 1, 0, 6, 6, "E"));
-      lessons2.add(new Lesson(1102, "Lesson22", 1, 2, 4, 6, "Y"));
-      lessons2.add(new Lesson(1201, "Lesson23", 2, 0, 6, 6, "E"));
-      lessons2.add(new Lesson(1202, "Lesson24", 2, 2, 4, 6, "Y"));
-      lessons2.add(new Lesson(1301, "Lesson25", 3, 0, 6, 6, "E"));
-      lessons2.add(new Lesson(1302, "Lesson26", 3, 2, 4, 6, "Y"));
-      lessons2.add(new Lesson(1401, "Lesson27", 4, 0, 6, 6, "E"));
-      lessons2.add(new Lesson(1501, "Lesson28", 5, 2, 4, 6, "Y"));
-      lessons2.add(new Lesson(1601, "Lesson29", 6, 0, 6, 6, "YE"));
+      lessons2.add(new Lesson("2101", "Lesson2101", 1, 0, 6, 6, "E"));
+      lessons2.add(new Lesson("2102", "Lesson2102", 1, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson("2201", "Lesson2201", 2, 0, 6, 6, "E"));
+      lessons2.add(new Lesson("2202", "Lesson2202", 2, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson("2301", "Lesson2301", 3, 0, 6, 6, "E"));
+      lessons2.add(new Lesson("2302", "Lesson2302", 3, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson("2401", "Lesson2401", 4, 0, 6, 6, "E"));
+      lessons2.add(new Lesson("2501", "Lesson2501", 5, 2, 4, 6, "Y"));
+      lessons2.add(new Lesson("2601", "Lesson2601", 6, 0, 6, 6, "YE"));
 
       Student student1 = new Student("test1", "1", "lname fname", "email1@ihu.gr",
           1, department1, 1);
@@ -185,8 +185,8 @@ public class Home extends JFrame {
       Administrator administrator = new Administrator("admin", "11",
           "Admin Admin", "admin@ihu.gr", 1);
 
-      student1.getPassedLessons().add(temp1);
-      student1.getPassedLessons().add(temp2);
+      student1.getPassedLessons().add(lesson1);
+      student1.getPassedLessons().add(lesson2);
 
       Registration registration21 = new Registration(0);
       Registration registration22 = new Registration(1);
@@ -253,13 +253,13 @@ public class Home extends JFrame {
       List<Lesson> lessons1 = department1.getLessons();
       List<Department> departments = university.getDepartments();
 
-      lessons1.add(new Lesson(1101, "Lesson11", 1, 2, 4, 6, "Y"));
-      lessons1.add(new Lesson(1102, "Lesson12", 1, 0, 6, 6, "Y"));
-      lessons1.add(new Lesson(1103, "Lesson13", 1, 2, 4, 6, "Y"));
-      lessons1.add(new Lesson(1601, "Lesson16", 6, 0, 6, 6, "E"));
-      lessons1.add(new Lesson(1701, "Lesson17", 7, 2, 4, 6, "YE"));
-      lessons1.add(new Lesson(1801, "Lesson18", 8, 0, 6, 6, "E"));
-      lessons1.add(new Lesson(1901, "Lesson19", 9, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson("1101", "Lesson1101", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson("1102", "Lesson1102", 1, 0, 6, 6, "Y"));
+      lessons1.add(new Lesson("1103", "Lesson1103", 1, 2, 4, 6, "Y"));
+      lessons1.add(new Lesson("1601", "Lesson1601", 6, 0, 6, 6, "E"));
+      lessons1.add(new Lesson("1701", "Lesson1701", 7, 2, 4, 6, "YE"));
+      lessons1.add(new Lesson("1801", "Lesson1801", 8, 0, 6, 6, "E"));
+      lessons1.add(new Lesson("1901", "Lesson1901", 9, 2, 4, 6, "YE"));
 
       Student student1 = new Student("test1", "1", "lname fname", "email1@auth.gr",
           1, department1, 1);

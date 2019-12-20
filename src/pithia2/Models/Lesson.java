@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Lesson implements Serializable {
 
-  private int id;
+  private String id;
   private String name;
   private int semester;
   private int labHours;
@@ -15,7 +15,7 @@ public class Lesson implements Serializable {
   private String type;
   private List<Lesson> requiredLessons = new ArrayList<Lesson>();
 
-  public Lesson(int id, String name, int semester, int labHours, int theoryHours, int credit,
+  public Lesson(String id, String name, int semester, int labHours, int theoryHours, int credit,
       String type) {
     this.id = id;
     this.name = name;
@@ -29,11 +29,11 @@ public class Lesson implements Serializable {
   public Lesson() {
   }
 
-  public int getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(String id) {
     this.id = id;
   }
 

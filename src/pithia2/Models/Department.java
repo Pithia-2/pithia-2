@@ -38,8 +38,8 @@ public class Department implements Serializable {
     this.lessons = lessons;
   }
 
-  public void deleteLesson(int id) {
-    lessons.removeIf(lesson -> lesson.getId() == id);
+  public void deleteLesson(String id) {
+    lessons.removeIf(lesson -> lesson.getId().equals(id));
   }
 
   public static Department search(String departmentName) {
