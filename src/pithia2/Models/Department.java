@@ -42,6 +42,10 @@ public class Department implements Serializable {
     this.lessons = lessons;
   }
 
+  public void deleteLesson(int id) {
+    lessons.removeIf(lesson -> lesson.getId() == id);
+  }
+
   public static Department search(String departmentName) {
     List<Department> departments = University.getUniversityInstance().getDepartments();
 

@@ -2,6 +2,7 @@ package pithia2.Views;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JButton;
@@ -16,7 +17,9 @@ import pithia2.GlobalConstants;
 import pithia2.Models.Administrator;
 import pithia2.Models.Department;
 import pithia2.Models.Lesson;
+import pithia2.Models.Student;
 import pithia2.Models.University;
+import pithia2.Models.User;
 
 public class LessonManagement extends JFrame {
 
@@ -38,8 +41,6 @@ public class LessonManagement extends JFrame {
   private JPanel PrerequisitePanel;
   private JScrollPane AvailablePrerequisites;
   private JTable AvailablePrerequisiteTable;
-
-  private List<Lesson> lessons;
 
   LessonManagement() {
     add(RootPanel);
@@ -77,6 +78,7 @@ public class LessonManagement extends JFrame {
       }
     });
 
+    // Moves lesson to AvailablePrerequisiteTable
     PrerequisiteTable.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent mouseEvent) {
@@ -86,32 +88,42 @@ public class LessonManagement extends JFrame {
             .elementAt(PrerequisiteTable.getSelectedRow());
         ((DefaultTableModel) AvailablePrerequisiteTable.getModel()).addRow(selectedRow);
         prerequisiteTableModel.removeRow(PrerequisiteTable.getSelectedRow());
-//        ErrorLabel.setVisible(false);
       }
     });
 
+    // Moves lesson to PrerequisiteTable
     AvailablePrerequisiteTable.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent mouseEvent) {
         super.mouseClicked(mouseEvent);
-        DefaultTableModel availablePrerequisiteTableModel = (DefaultTableModel) AvailablePrerequisiteTable.getModel();
-        Vector<Object> selectedRow = (Vector<Object>) availablePrerequisiteTableModel.getDataVector()
+        DefaultTableModel availablePrerequisiteTableModel = (DefaultTableModel) AvailablePrerequisiteTable
+            .getModel();
+        Vector<Object> selectedRow = (Vector<Object>) availablePrerequisiteTableModel
+            .getDataVector()
             .elementAt(AvailablePrerequisiteTable.getSelectedRow());
         ((DefaultTableModel) PrerequisiteTable.getModel()).addRow(selectedRow);
         availablePrerequisiteTableModel.removeRow(AvailablePrerequisiteTable.getSelectedRow());
-//        ErrorLabel.setVisible(false);
       }
     });
+
+    NewButton.addActionListener(e -> newLesson());
+
+    DeleteButton.addActionListener(e -> deleteLesson());
+
+//    SaveButton.addActionListener(e -> save());
   }
 
   private void createUIComponents() {
-    String[] lessonColumns = {"ID", "Lesson", "Semester", "Lab Hours", "Theory Hours", "Credits", "Type"};
+    String[] lessonColumns = {"ID", "Lesson", "Semester", "Lab Hours", "Theory Hours", "Credits",
+        "Type"};
     DefaultTableModel lessonTableModel = new DefaultTableModel(lessonColumns, 0);
     LessonTable = new JTable(lessonTableModel);
+    LessonTable.setDefaultEditor(Object.class, null);
 
-    String[] prerequisiteColumns = {"ID", "Lesson", "Credits"};
+    String[] prerequisiteColumns = {"ID", "Lesson", "Semester"};
     DefaultTableModel prerequisiteTableModel = new DefaultTableModel(prerequisiteColumns, 0);
-    DefaultTableModel availablePrerequisiteTableModel = new DefaultTableModel(prerequisiteColumns, 0);
+    DefaultTableModel availablePrerequisiteTableModel = new DefaultTableModel(prerequisiteColumns,
+        0);
     PrerequisiteTable = new JTable(prerequisiteTableModel);
     AvailablePrerequisiteTable = new JTable(availablePrerequisiteTableModel);
     PrerequisiteTable.setDefaultEditor(Object.class, null);
@@ -127,11 +139,10 @@ public class LessonManagement extends JFrame {
   }
 
   private void loadLessons() {
+    // Reset the table
     ((DefaultTableModel) LessonTable.getModel()).setRowCount(0);
-    List<Department> departments = University.getUniversityInstance().getDepartments();
-    Department selectedDepartment = departments.get(DepartmentsDropdown.getSelectedIndex());
-    lessons = selectedDepartment.getLessons();
 
+    List<Lesson> lessons = getSelectedDepartmentsLessons();
     Object[] rowData = new Object[7];
     for (Lesson lesson : lessons) {
       rowData[0] = lesson.getId();
@@ -150,15 +161,109 @@ public class LessonManagement extends JFrame {
     ((DefaultTableModel) PrerequisiteTable.getModel()).setRowCount(0);
     ((DefaultTableModel) AvailablePrerequisiteTable.getModel()).setRowCount(0);
 
-    int selectedLessonIndex = LessonTable.getSelectedRow();
-    List<Lesson> requiredLessons = lessons.get(selectedLessonIndex).getRequiredLessons();
+    List<Lesson> requiredLessons = getSelectedLessonsPrerequisites();
     for (Lesson requiredLesson : requiredLessons) {
       Object[] row = new Object[3];
       row[0] = requiredLesson.getId();
       row[1] = requiredLesson.getName();
-      row[2] = requiredLesson.getCredit();
+      row[2] = requiredLesson.getSemester();
 
       ((DefaultTableModel) PrerequisiteTable.getModel()).addRow(row);
     }
+
+    List<Lesson> availablePrerequisites = getAvailablePrerequisites();
+    for (Lesson availablePrerequisite : availablePrerequisites) {
+      Object[] row = new Object[3];
+      row[0] = availablePrerequisite.getId();
+      row[1] = availablePrerequisite.getName();
+      row[2] = availablePrerequisite.getSemester();
+
+      ((DefaultTableModel) AvailablePrerequisiteTable.getModel()).addRow(row);
+    }
   }
+
+  private List<Lesson> getAvailablePrerequisites() {
+    List<Lesson> lessons = getSelectedDepartmentsLessons();
+    List<Lesson> availablePrerequisites = new ArrayList<>(lessons.size());
+    availablePrerequisites.addAll(lessons);
+    int selectedLessonIndex = LessonTable.getSelectedRow();
+    Lesson selectedLesson = availablePrerequisites.get(selectedLessonIndex);
+
+    // Remove lessons that exist in the PrerequisiteTable already
+    List<Lesson> requiredLessons = getSelectedLessonsPrerequisites();
+    for (Lesson requiredLesson : requiredLessons) {
+      int availablePrerequisiteIndex = availablePrerequisites.indexOf(requiredLesson);
+      if (availablePrerequisiteIndex != -1) {
+        availablePrerequisites.remove(availablePrerequisiteIndex);
+      }
+    }
+
+    // Remove lessons that belong to same or higher semester
+    availablePrerequisites.removeIf(l -> l.getSemester() >= selectedLesson.getSemester());
+
+    return availablePrerequisites;
+  }
+
+  private List<Lesson> getSelectedDepartmentsLessons() {
+    List<Department> departments = University.getUniversityInstance().getDepartments();
+    Department selectedDepartment = departments.get(DepartmentsDropdown.getSelectedIndex());
+    return selectedDepartment.getLessons();
+  }
+
+  private List<Lesson> getSelectedLessonsPrerequisites() {
+    int selectedLessonIndex = LessonTable.getSelectedRow();
+    return getSelectedDepartmentsLessons().get(selectedLessonIndex).getRequiredLessons();
+  }
+
+  private void newLesson() {
+    int increment = getSelectedDepartmentsLessons().size() + 1;
+    Lesson lesson = new Lesson(1100 + increment, "Lesson11" + increment, 1, 0, 0, 6, "ΥΠ");
+    List<Lesson> lessons = getSelectedDepartmentsLessons();
+    lessons.add(lesson);
+
+    GlobalConstants.save();
+    loadLessons();
+  }
+
+  private void deleteLesson() {
+    int id = Integer.parseInt(LessonTable.getValueAt(LessonTable.getSelectedRow(), 0).toString());
+    List<Department> departments = University.getUniversityInstance().getDepartments();
+    Department selectedDepartment = departments.get(DepartmentsDropdown.getSelectedIndex());
+    selectedDepartment.deleteLesson(id);
+
+    GlobalConstants.save();
+    loadLessons();
+  }
+
+//  private void save() {
+//    List<User> users = new ArrayList<User>();
+//
+//    for (int i = 0; i < StudentTable.getRowCount(); i++) {
+//      String username = StudentTable.getValueAt(i, 0).toString();
+//      String password = StudentTable.getValueAt(i, 1).toString();
+//      String fullname = StudentTable.getValueAt(i, 2).toString();
+//      String email = StudentTable.getValueAt(i, 3).toString();
+//      int studentCode = Integer.parseInt(StudentTable.getValueAt(i, 4).toString());
+//      Department department = Department.search(StudentTable.getValueAt(i, 5).toString());
+//      int semester = Integer.parseInt(StudentTable.getValueAt(i, 6).toString());
+//
+//      users
+//          .add(new Student(username, password, fullname, email, studentCode, department, semester));
+//    }
+//
+//    for (int i = 0; i < AdministratorTable.getRowCount(); i++) {
+//      String username = AdministratorTable.getValueAt(i, 0).toString();
+//      String password = AdministratorTable.getValueAt(i, 1).toString();
+//      String fullname = AdministratorTable.getValueAt(i, 2).toString();
+//      String email = AdministratorTable.getValueAt(i, 3).toString();
+//      int adminCode = Integer.parseInt(AdministratorTable.getValueAt(i, 4).toString());
+//
+//      users.add(new Administrator(username, password, fullname, email, adminCode));
+//    }
+//
+//    University.getUniversityInstance().setUsers(users);
+//
+//    GlobalConstants.save();
+//    loadLessons();
+//  }
 }
