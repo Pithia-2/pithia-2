@@ -40,9 +40,7 @@ public class User implements Serializable {
     return email;
   }
 
-  public static List<User> deleteUser(List<User> users, String username) {
+  public static void deleteUser(List<User> users, String username) {
     users.removeIf(user -> user.getUsername().equals(username));
-
-    return users;
   }
 }
