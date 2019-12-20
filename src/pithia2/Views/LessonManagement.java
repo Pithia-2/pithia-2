@@ -190,7 +190,7 @@ public class LessonManagement extends JFrame {
 
   private void newLesson() {
     int increment = getSelectedDepartmentsLessons().size() + 1;
-    Lesson lesson = new Lesson(1100 + increment, "Lesson11" + increment, 1, 0, 0, 6, "ΥΠ");
+    Lesson lesson = new Lesson("11" + increment, "Lesson11" + increment, 1, 0, 0, 6, "ΥΠ");
     List<Lesson> lessons = getSelectedDepartmentsLessons();
     lessons.add(lesson);
 
@@ -199,7 +199,7 @@ public class LessonManagement extends JFrame {
   }
 
   private void deleteLesson() {
-    int id = Integer.parseInt(LessonTable.getValueAt(LessonTable.getSelectedRow(), 0).toString());
+    String id = LessonTable.getValueAt(LessonTable.getSelectedRow(), 0).toString();
     List<Department> departments = University.getUniversityInstance().getDepartments();
     Department selectedDepartment = departments.get(DepartmentsDropdown.getSelectedIndex());
     selectedDepartment.deleteLesson(id);
@@ -214,7 +214,7 @@ public class LessonManagement extends JFrame {
     for (int i = 0; i < LessonTable.getRowCount(); i++) {
       Lesson currentLesson = lessons.get(i);
 
-      currentLesson.setId(Integer.parseInt(LessonTable.getValueAt(i, 0).toString()));
+      currentLesson.setId(LessonTable.getValueAt(i, 0).toString());
       currentLesson.setName(LessonTable.getValueAt(i, 1).toString());
       currentLesson.setSemester(Integer.parseInt(LessonTable.getValueAt(i, 2).toString()));
       currentLesson.setLabHours(Integer.parseInt(LessonTable.getValueAt(i, 3).toString()));
