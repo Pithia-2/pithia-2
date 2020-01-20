@@ -152,13 +152,15 @@ public class AdminGrades extends JFrame {
           }
         } catch (NumberFormatException e) {
           linesWithErrors.add(index);
-          ErrorLabel.setText("Non number grades in lines: ");
-          for (Integer line : linesWithErrors) {
-            ErrorLabel.setText(ErrorLabel.getText() + (line + 1) + " ");
-          }
         }
 
         index++;
+      }
+      if (!linesWithErrors.isEmpty()) {
+        ErrorLabel.setText("Non number grades in lines:");
+        for (Integer line : linesWithErrors) {
+          ErrorLabel.setText(ErrorLabel.getText() + " " + (++line));
+        }
       }
 
       selectedStudent.fillPassedLessons();
