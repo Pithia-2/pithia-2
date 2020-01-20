@@ -138,14 +138,18 @@ public class AdminGrades extends JFrame {
       List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
       int index = 0;
       for (RegisteredLesson registeredLesson : registeredLessons) {
-        double grade = Double.parseDouble(LessonTable.getValueAt(index, 2).toString());
+        try {
+          double grade = Double.parseDouble(LessonTable.getValueAt(index, 2).toString());
 
-        if (grade < 0) {
-          registeredLesson.setGrade(0);
-        } else if (grade > 10) {
-          registeredLesson.setGrade(10);
-        } else {
-          registeredLesson.setGrade(grade);
+          if (grade < 0) {
+            registeredLesson.setGrade(0);
+          } else if (grade > 10) {
+            registeredLesson.setGrade(10);
+          } else {
+            registeredLesson.setGrade(grade);
+          }
+        } catch (NumberFormatException e){
+          ErrorLabel.setText("Grade in line " + index + "must be number");
         }
 
         index++;
