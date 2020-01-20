@@ -2,6 +2,7 @@ package pithia2.Views;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -136,6 +137,7 @@ public class AdminGrades extends JFrame {
       ErrorLabel.setText("Student has no registrations.");
     } else {
       List<RegisteredLesson> registeredLessons = lastRegistration.getRegisteredLessons();
+      List<Integer> linesWithErrors = new ArrayList<>();
       int index = 0;
       for (RegisteredLesson registeredLesson : registeredLessons) {
         try {
@@ -148,8 +150,12 @@ public class AdminGrades extends JFrame {
           } else {
             registeredLesson.setGrade(grade);
           }
-        } catch (NumberFormatException e){
-          ErrorLabel.setText("Grade in line " + index + "must be number");
+        } catch (NumberFormatException e) {
+          linesWithErrors.add(index);
+          ErrorLabel.setText("Non number grades in lines: ");
+          for (Integer line : linesWithErrors) {
+            ErrorLabel.setText(ErrorLabel.getText() + (line + 1) + " ");
+          }
         }
 
         index++;
